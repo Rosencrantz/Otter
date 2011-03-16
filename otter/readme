@@ -1,0 +1,6 @@
+There are two ways to push Otter.
+
+1. git push origin master -> This will push all your files onto the remote github repository.
+2. git push web master -> This will push your changes to the deployment machine ready for deployment.
+
+"Otter: Collaboration for semi-aquatic mammals."
