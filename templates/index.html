@@ -58,26 +58,15 @@
                 <p>Dan Johnson</p>
             </div>
             <div id="toolbar">
-<<<<<<< HEAD
-                <a href="#" id="toggleVersionHistory">V3</a>
-                <ul id="versionHistory" class="dropdown">
-                    <li><a href="#">V1</a></li>
-                    <li><a href="#">V2</a></li>
-                    <li><a href="#" class="on">V3</a></li>
-                    <li><a href="#">V4</a></li>
-                    <li><a href="#">V5</a></li>
-=======
-				{% if current_version %}
-				 <a href="#"><span>{{ current_version }}</span></a>
+                {% if current_version %}
+				 <a href="#" id="toggleVersionHistory">{{ current_version }}</a>
 				{% else %}
-				    <a href="#"><span>V1</span></a>
+				    <a href="#" id="toggleVersionHistory">>V1</a>
 				{% endif %}
-               
                 <ul id="versionHistory" class="dropdown">
 					{% for rev in revisions %}
                     	<li><a href="#" class="version-item">{{ rev.revision_number}}</a></li>
-					{% endfor %}
->>>>>>> 5d8e6331cb1a5b8d588639e81864f6e38168de57
+                        {% endfor %}
                 </ul>
                 <ul id="screens">
                     <li><a href="">Homepage</a></li>

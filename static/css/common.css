@@ -244,7 +244,12 @@ button.comments.off {
     margin-right: 5px;
 }
 
+#toggleVersionHistory {
+    text-transform: uppercase;
+}
+
 #versionHistory {
+    text-transform: uppercase;
     position: absolute;
     opacity: 0;
     width: 45px;
