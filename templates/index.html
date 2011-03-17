@@ -14,6 +14,22 @@
 		<script src="static/js/comment.js"></script>
         <script src="static/js/transitions.js"></script>
 		<script src="static/js/version.js"></script>
+		<script src="static/js/todo.js"></script>
+		<script type="x-template" name="todo">
+			<section class="">
+            	<header>
+                	<h1> ${version} <time datetime="">${date}</time></h1>
+            	</header>
+            <p>${text}</p>
+            	<fieldset>
+                	<legend></legend>
+                	<input type="checkbox" name="" id="" value="" />
+                	<label for="">Resolved</label>
+            	</fieldset>
+        	</section>
+		</script>
+		
+		
 		<script type="x-template" name="comment">
 	        <div class="item"> 
 	              <article class="explain"> 
@@ -212,7 +228,6 @@
                             <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                             <footer>
                                 <div class="buttons">
-
                                     <a class="create" href="">Create a todo</a>
                                     <a class="reply" href="">Reply</a>                              
                                 </div>
