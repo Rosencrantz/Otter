@@ -3,6 +3,7 @@ from fedex.models import *
 from django.contrib.auth.models import * 
 
 class UserAdmin(admin.ModelAdmin):
+    list_display = ('user_display_name','email')
     pass
 
 class AgencyAdmin(admin.ModelAdmin):
@@ -21,6 +22,7 @@ class RegionAdmin(admin.ModelAdmin):
     pass
 
 class CommentAdmin(admin.ModelAdmin):
+    list_display = ('comment','user')
     pass
 
 admin.site.register(OtterUser, UserAdmin)

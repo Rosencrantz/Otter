@@ -45,5 +45,5 @@ class Comment(models.Model):
     comment = models.CharField(max_length=10000)
     region = models.ForeignKey(Region)
     created_at = models.DateField()
-    parent = models.ManyToManyField('self', null=True, blank=True)
+    parent = models.ForeignKey('self', null=True, related_name='parent_comment')
 
