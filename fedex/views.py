@@ -7,3 +7,12 @@ def index(request):
     c = Context({
     })
     return HttpResponse(t.render(c))
+    
+    
+
+def upload(request):
+    t = loader.get_template('index.html')
+    c = Context({
+    
+    })
+    return HttpResponse(t.render(c))
