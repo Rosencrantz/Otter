@@ -10,8 +10,9 @@ $(document).ready(function() {
           datatype: "json",
           success: function(data) {
               overlayer.getCurrentImage().remove();
-              var something =JSON.parse(data);
+              var something = JSON.parse(data);
               overlayer.loadImage(something[0].fields.filedata);
+              $("#design").attr({"data-fileid":something[0].fields.pk})
               //load comments
               //load overlays
           },

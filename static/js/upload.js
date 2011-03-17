@@ -40,6 +40,8 @@ var uploader = (function(dropzoneid) {
                                         if (xhr.readyState == 4) {
                                            if(xhr.status == 200){ 
                                             document.getElementById("page").dataset["revision"] = xhr.responseText;
+                                            var li = $("<li />").append("<a href='#' class='version-item'>"+  xhr.responseText +"</a>");
+                                            $("#versionHistory").append(li);
                                             }
                                         }
                                       };
