@@ -28,9 +28,8 @@ var imageOverlayer = (function() {
             this.onmouseup = function(e) {
                 this.onmousemove = null;
                 if(moved) {
-                    $("body").attr("")
                     version = version + .1;
-                    var type = "D"; // Designer annotation
+                    var type = type == "designer" ? "D" : "G"; // Designer annotation
 					var file_id = $("#design").attr("data-fileid");
 
                     var x = rect.attr("x");
