@@ -8,7 +8,7 @@ a {
     text-decoration: none;
 }
 
-button {
+#toolbar button {
     font-family: "helvetica neue";
     font-size: 0.8125em;
     height: 25px;
@@ -363,6 +363,18 @@ button.comments.off {
 
 #annotations article .information {
     margin: 15px 40px 0 40px;
+}
+
+#annotations article footer {
+    width: 100%;
+    position: relative;
+    padding: 10px 0 20px 0;
+}
+
+#annotations article footer .buttons {
+    width: auto;
+    position: absolute;
+    right: 10px;
 }
 
 footer {
