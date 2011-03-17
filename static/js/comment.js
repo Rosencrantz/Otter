@@ -27,6 +27,7 @@
         };
 
 		var addComment = function(comment) {
+				Raphael.eve("comment.added");
 				$.ajax({
 						url : '/add/comments',
 						dataType : 'json',
@@ -80,6 +81,17 @@
 
             return false;
         });    
+        	Raphael.eve.on("comment.added", function() {
+					$.tmpl( template , comment).appendTo("#annotation1")    
+					commentDialog.removeClass("loading");
+					commentDialog.addClass("success");
+
+
+					commentDialog.fadeOut(200, function() {
+							$(this).find("#comment").val("");
+							$(this).removeClass("success");
+					});
+			});
         
 				$("#comment-cancel").one(function() {
 						opts.rect.remove();
@@ -91,7 +103,8 @@
         $(".reply").click(function(e) {
             e.preventDefault();
             renderDialog($('#comment-dialog'), $('#dialogs'), 'comment');
-            /*var button = document.getElementById("comment-submit");
+
+            var button = document.getElementById("comment-submit");
             var insertAfter = $(this).closest(".comment");
 
             button.onsubmit = function(e) {
@@ -108,7 +121,7 @@
                 commentDialog.style.display = "none";
                 document.getElementById("comment").value = ""
                 insertAfter.after(a);
-            }*/
+            }
        });
     }); 
     
