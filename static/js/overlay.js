@@ -6,7 +6,7 @@ var imageOverlayer = (function() {
 	Raphael.eve.on("overlay.loaded.images",function(paper) {
 	    revision = $("#page").attr("data-revision").replace(/(v|V)/i,"");
 		paper.canvas.onmousedown = function(e) {
-		
+		   
 		    type = $("body").attr("data-user-type"),
 		    stroke = type == "designer" ?  "#339" : "#FF9900";
             var moved = false,
@@ -69,11 +69,11 @@ var imageOverlayer = (function() {
 	            comments.general[i].remove();
 	        }
             for(var i = 0, ii = comments.designer.length; i < ii; i++) {
-    	            comments.designer[i].remove();
+                comments.designer[i].remove();
             }
 	        rects = [];
 	        container = null;
-	        version = 1.0;
+	        version = 1;
 	    },
 	    show : function(type) {
 	        for(var i = 0, ii = comments[type].length; i < ii; i++) {
