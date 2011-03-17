@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^upload/', 'fedex.views.upload', name='upload'),
     url(r'^add/comments','fedex.comments.add',name="addcomment"),
     url(r'^add/revision','fedex.revisions.add',name="addrevision"),
+    url(r'^get/files/(?P<revision>(v|V)\d+)/$', 'fedex.files.get'),
     url(r'^debug/','fedex.views.add_debug',name="debug"),
     # url(r'^otter/', include('otter.foo.urls')),
 

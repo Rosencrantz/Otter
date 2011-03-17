@@ -1,6 +1,29 @@
 from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
+import re
 from fedex import models
+
+def get_revs(project):
+    revs = models.Revision.objects.filter(projects=project)
+    highest = 0
+ 
+    if len(revs) is 0:
+        return None,None
+    
+    highest_rev = revs[0]
+    p = re.compile('\d+')
+    for rev in revs:
+        number = p.findall(rev.revision_number)[0]
+        if number > highest:
+            highest = number
+            highest_rev = rev
+    
+    return revs,highest_rev.revision_number
+             
+    
+
+def get_project():
+    return models.Project.objects.get(id=1)
 
 def render_template(name, context=Context({})):
     return loader.get_template(name).render(context)
@@ -34,9 +57,12 @@ def index(request):
 
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
-
+    project = get_project()
+    revs, highest_rev = get_revs(project)
     t = loader.get_template('index.html')
     c = Context({
+         "current_version" : highest_rev,
+         "revisions" : revs
     })
     return HttpResponse(t.render(c))
     

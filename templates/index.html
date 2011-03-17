@@ -12,6 +12,7 @@
 		<script src="static/js/r.js"></script>
 		<script src="static/js/overlay.js"></script>
 		<script src="static/js/comment.js"></script>
+		<script src="static/js/version.js"></script>
 		<script type="x-template" name="comment">
 	        <div class="item"> 
 	              <article class="explain"> 
@@ -34,7 +35,12 @@
 		</script>
     </head>
     <body>
-	    <div id="page" data-revision="v1">
+		{% if current_version %}
+		     <div id="page" data-revision="{{ current_version }}">
+		{% else %}
+		     <div id="page" data-revision="v1">
+		{% endif %}
+	   
         <header>
             <div id="productHeader">
                 <a href="" id="logo"><img src="static/images/OtterLogoSmall.png" title="" alt="" /></a>
@@ -51,13 +57,16 @@
                 <p>Dan Johnson</p>
             </div>
             <div id="toolbar">
-                <a href="#"><span>V3</span></a>
+				{% if current_version %}
+				 <a href="#"><span>{{ current_version }}</span></a>
+				{% else %}
+				    <a href="#"><span>V1</span></a>
+				{% endif %}
+               
                 <ul id="versionHistory" class="dropdown">
-                    <li><a href="#">V1</a></li>
-                    <li><a href="#">V2</a></li>
-                    <li><a href="#">V3</a></li>
-                    <li><a href="#">V4</a></li>
-                    <li><a href="#">V5</a></li>
+					{% for rev in revisions %}
+                    	<li><a href="#" class="version-item">{{ rev.revision_number}}</a></li>
+					{% endfor %}
                 </ul>
                 <ul id="screens">
                     <li><a href="">Homepage</a></li>
