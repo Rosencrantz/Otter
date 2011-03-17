@@ -12,7 +12,7 @@ $(document).ready(function() {
               overlayer.getCurrentImage().remove();
               var something = JSON.parse(data);
               overlayer.loadImage(something[0].fields.filedata);
-              $("#design").attr({"data-fileid":something[0].fields.pk})
+              $("#design").attr({"data-fileid":something[0].pk})
               //load comments
               //load overlays
           },

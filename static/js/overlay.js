@@ -54,11 +54,14 @@ var imageOverlayer = (function() {
 	});
 	return {
 	    clear : function() {
-	        for(var i = 0, ii = rects.length; i < ii; i++) {
-	            rects[i].remove();
+	        for(var i = 0, ii = comments.general.length; i < ii; i++) {
+	            comments.general[i].remove();
 	        }
+            for(var i = 0, ii = comments.designer.length; i < ii; i++) {
+    	            comments.designer[i].remove();
+            }
 	        rects = [];
-	        container = paper.set();
+	        container = null;
 	        version = 1.0;
 	    },
 	    show : function(type) {
