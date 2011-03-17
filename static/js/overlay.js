@@ -54,7 +54,7 @@ var imageOverlayer = (function() {
 
 
 var imageOverlays = (function(container) {
-	var image, paper, holder;
+	var image, paper, holder, currentImage;
 	function getImage(path) {
 		var img = new Image();
 		img.src = path;
@@ -69,8 +69,11 @@ var imageOverlays = (function(container) {
 	return {
 		loadImage : function(path) {
 			var image = getImage(path);
-			paper.image(image.src, 0, 0,800,600);
+			currentImage = paper.image(image.src, 0, 0,800,600);
 			Raphael.eve('overlay.loaded.images',this,paper);
+		},
+		getCurrentImage : function(){
+		    return currentImage;
 		},
 		loadOverlays : function(points,options) {
 			for(var i = 0, ii = points.length; i < ii; i++) {
