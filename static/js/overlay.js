@@ -1,10 +1,12 @@
 var imageOverlayer = (function() {
-    var comments = {designer: [], general: []}, version = 1.0,container, type, stroke;
-    
+    var comments = {designer: [], general: []}, version = 1,container, type, stroke,revision;
+
         
 
 	Raphael.eve.on("overlay.loaded.images",function(paper) {
+	    revision = $("#page").attr("data-revision").replace(/(v|V)/i,"");
 		paper.canvas.onmousedown = function(e) {
+		
 		    type = $("body").attr("data-user-type"),
 		    stroke = type == "designer" ?  "#339" : "#FF9900";
             var moved = false,
@@ -28,8 +30,7 @@ var imageOverlayer = (function() {
             this.onmouseup = function(e) {
                 this.onmousemove = null;
                 if(moved) {
-                    version = version + .1;
-                    var type = type == "designer" ? "D" : "G"; // Designer annotation
+                    var backendType = type == "designer" ? "D" : "G"; // Designer annotation
 					var file_id = $("#design").attr("data-fileid");
 
                     var x = rect.attr("x");
@@ -41,15 +42,17 @@ var imageOverlayer = (function() {
                     var iy = y;
 					var region = {x:x,y:y,width:width,height:height,type:type,file:file_id};
 
-        
+                
                    
-                    rect = paper.rect(ix,iy, 40, 20).attr({"fill": stroke,"stroke":stroke}); 
-                    text =  paper.text(ix + 23 ,iy + 13,"3.0").attr({stroke: "#FFF", "font-size": "14" });
+                    rect = paper.rect(ix,iy, 40, 20).attr({"fill": stroke,"stroke":stroke});
+                    text =  paper.text(ix + 23 ,iy + 13,revision + "." + version).attr({stroke: "#FFF", "font-size": "14" });
+                    version++;
                     container.push(rect);
+                    container.push(text);
                     
               
-                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container, region:region, type:type,file:file_id});   
-                    comments.general.push(container);
+                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container, region:region, type:backendType,file:file_id});   
+                    comments[type].push(container);
                     container = null;
                     container = paper.set();
                 }
