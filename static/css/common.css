@@ -140,19 +140,23 @@ button.comments.off {
     float: right;
 }
 
+.dropdown,
 #tasks-done {
     display: none;
 }
 
-.dropdown,
 #tasks time,
 #tasks header ul,
-#versionHistory {
+#versionHistory,
+#projects {
     display: none;
     position: absolute;
 }
 
-
+.dropdown {
+    padding-right: 20px;
+    background: url(/static/images/downArrow.png) no-repeat right 5px;
+}
 
 #dialogs .dragFile, 
 #dialogs .comment,
@@ -212,6 +216,23 @@ button.comments.off {
 
 #productHeader p:last-child {
     margin-right: 10px;
+}
+
+#projects {
+    top: 25px;
+    left: 126px;
+    z-index: 2;
+    background-color: #CCC;
+    width: 150px;
+    box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.6);
+}
+
+#projects ul,
+#projects a {
+    color: #333;
+    display: block;
+    width: 100%;
+    padding: 3px 0;
 }
 
 #toolbar {

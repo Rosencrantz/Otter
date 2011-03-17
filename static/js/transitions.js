@@ -13,12 +13,17 @@
         $('#showCompleteList').attr('class', '');
         $('#showTodoList').attr('class', 'active');
    }); 
+
    $(document).bind('showCompleteList', function(e) {
         $('#tasks-todo').hide();
         $('#tasks-done').show();
         $('#showCompleteList').attr('class', 'active');
         $('#showTodoList').attr('class', '');
    }); 
+
+   $(document).bind('showProjects', function(e) {
+        $('#projects').toggle();
+   });
 
    $(document).bind('click', function(e) {
        switch(e.target.id) {
@@ -33,6 +38,9 @@
             case 'showCompleteList':
                 e.preventDefault();
                 $(e.target).trigger('showCompleteList');
+            case 'showProjects':
+                e.preventDefault();
+                $(e.target).trigger('showProjects');
         }
    });
 })(jQuery);

@@ -45,8 +45,8 @@
         <header>
             <div id="productHeader">
                 <a href="" id="logo"><img src="static/images/OtterLogoSmall.png" title="" alt="" /></a>
-                <a href=""><span>Remicide ipad app</span></a>
-                <ul id="projects" class="dropdown">
+                <a href="" id="showProjects" class="dropdown">Remicide ipad app</a>
+                <ul id="projects">
                     <li><a href="#">One</a></li>
                     <li><a href="#">One</a></li>
                     <li><a href="#">One</a></li>
@@ -63,7 +63,7 @@
 				{% else %}
 				    <a href="#" id="toggleVersionHistory">>V1</a>
 				{% endif %}
-                <ul id="versionHistory" class="dropdown">
+                <ul id="versionHistory">
 					{% for rev in revisions %}
                     	<li><a href="#" class="version-item">{{ rev.revision_number}}</a></li>
                         {% endfor %}
