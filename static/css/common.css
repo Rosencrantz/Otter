@@ -400,3 +400,68 @@ footer {
     clear: left;
     width: 100%;
 }
+
+.dialog {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    width: 600px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#CCCCCC));
+}
+
+.dialog header {
+    font-size: 0.8175em;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 6px 6px 0 0;
+    padding: 15px;
+}
+
+div.dialog.explain header {
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4B4BA5), to(#2E2E87));
+}
+
+div.dialog.comment header {
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFA51F), to(#E18701));
+}
+
+div.dialog.dragFile header {
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#787878), to(#5A5A5A));
+}
+
+.dialog form legend,
+.dialog form label {
+    display: none;
+}
+
+.dialog form .buttons {
+    padding: 10px 0 20px 0;
+}
+
+.dialog form .buttons button {
+    float: right;
+}
+
+.dialog form .buttons button:first-child {
+    margin-left: 20px;
+}
+
+.dialog form {
+    padding: 21px 19px;
+}
+
+.dialog form textarea {
+    width: 100%;
+    height: 161px;
+    border: 1px solid #999;
+}
+
+.dialog #dragFilesHere {
+    height: 200px;
+    background: url(/static/images/drag_files_here.png) no-repeat 50% 50%;
+    overflow: hidden;
+    text-indent: -9999px;
+}

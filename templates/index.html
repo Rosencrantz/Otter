@@ -210,10 +210,9 @@
             This is the footer
         </footer>
         <div id="dialogs">
-            <div class="dialog explain">
+            <div class="dialog explain" style="display: block">
                 <header>
                     <h1>Explain</h1>
-                    <button>Close</button>
                 </header>
                 <form id="" name="" action="" method="">
                     <fieldset>
@@ -221,13 +220,15 @@
                         <label for="explain">Explain</label>
                         <textarea id="explain"></textarea>
                     </fieldset>
-                    <button type="submit">Submit</button>
+                    <div class="buttons">
+                        <button type="cancel">cancel</button>
+                        <button type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
             <div class="dialog comment" id="comment-dialog">
                 <header>
                     <h1>Comment</h1>
-                    <button>Close</button>
                 </header>
                 <form id="" name="" action="" method="">
                     <fieldset>
@@ -235,21 +236,18 @@
                         <label for="comment">Comment</label>
                         <textarea id="comment"></textarea>
                     </fieldset>
-                    <button type="submit">Submit</button>
+                    <div class="buttons">
+                        <button type="cancel">cancel</button>
+                        <button type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
-            <div class="dialog addTask">
+            <div class="dialog dragFile">
                 <header>
-                    <h1>Add task</h1>
-                    <button>Close</button>
+                    <h1>Upload Files</h1>
                 </header>
                 <form id="" name="" action="" method="">
-                    <fieldset>
-                        <legend>Add to Todo list</legend>
-                        <label for="addTask">Add to todo list</label>
-                        <textarea id="addTask"></textarea>
-                    </fieldset>
-                    <button type="submit">Submit</button>
+                    <div id="dragFilesHere">Drag files here</div>
                 </form>
             </div>
         </div>
