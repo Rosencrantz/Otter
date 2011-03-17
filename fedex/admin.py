@@ -1,15 +1,11 @@
 from django.contrib import admin
 from fedex.models import *
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 
-from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.admin import User
 
-class OtterUserAdmin(UserAdmin):
-    def __init__(self, *args, **kwargs):
-	super(OtterUserAdmin,self).__init__(*args,**kwargs)
-	fields = list(UserAdmin.fieldsets[0][1]['fields'])
-	fields.append('user_display_name')
-	UserAdmin.fieldsets[0][1]['fields'] = fields
+class OtterUserAdmin(admin.ModelAdmin):
+    list_display = ('username','email','first_name', 'last_name','password')
 
 class AgencyAdmin(admin.ModelAdmin):
     pass
@@ -28,11 +24,9 @@ class RegionAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('comment','user')
-    pass
 
 admin.site.unregister(User)
-admin.site.register(OtterUser, OtterUserAdmin)
-
+admin.site.register(User, OtterUserAdmin)
 admin.site.register(Agency, AgencyAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Revision, RevisionAdmin)
