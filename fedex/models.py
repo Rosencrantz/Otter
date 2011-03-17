@@ -1,6 +1,17 @@
 from django.db import models
+#from django.contrib import admin
+
 
 # Create your models here.
+class OtterUser(models.Model):
+    user_display_name = models.CharField(max_length=40)
+    email = models.CharField(max_length=100)
+    password = models.CharField(max_length=40)
+    user_type = (
+        ('D', 'Designer'),
+        ('G', 'General'),
+    )
+
 class Agency(models.Model):
     name = models.CharField(max_length=40)
 
@@ -30,9 +41,9 @@ class Region(models.Model):
     files = models.ForeignKey(File)
     
 class Comment(models.Model):
-    user_display_name = models.CharField(max_length=40)
+    user = models.OneToOneField(OtterUser)
     comment = models.CharField(max_length=10000)
-    regions = models.ForeignKey(Region)
-
-
+    region = models.ForeignKey(Region)
+    created_at = models.DateField()
+    parent = models.ForeignKey('self', null=True, related_name='parent_comment')
 
