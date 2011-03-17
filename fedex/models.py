@@ -30,6 +30,7 @@ class File(models.Model):
 class Region(models.Model):
     x = models.FloatField()
     y = models.FloatField()
+    title = models.CharField(max_length=10)
     width = models.FloatField()
     height = models.FloatField()
     annotation_type = (
