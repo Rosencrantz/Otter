@@ -1,16 +1,20 @@
 var imageOverlayer = (function() {
-    var comments = {designer: [], general: []}, version = 1.0,container;
+    var comments = {designer: [], general: []}, version = 1.0,container, type, stroke;
+    
+        
+
 	Raphael.eve.on("overlay.loaded.images",function(paper) {
 		paper.canvas.onmousedown = function(e) {
+		    type = $("body").attr("data-user-type"),
+		    stroke = type == "designer" ?  "#339" : "#FF9900";
             var moved = false,
 				x = e.clientX,
 				y = e.clientY,
-				rect = paper.rect(x - 10,y -100, 1, 1).attr({stroke:"#FF9900","stroke-width":3});
+				rect = paper.rect(x - 10,y -100, 1, 1).attr({stroke:stroke,"stroke-width":3});
                 container = paper.set();
                 container.push(rect);
             this.onmousemove = function(e) {
                 moved = true;
-                     
 				var dx = e.clientX - x,
 					dy = e.clientY - y;
 				if(dx < 0 || dy < 0) {
@@ -24,12 +28,10 @@ var imageOverlayer = (function() {
             this.onmouseup = function(e) {
                 this.onmousemove = null;
                 if(moved) {
-					//todo add some things for colour hover etc
-              
-										// TODO (fix); 
+                    $("body").attr("")
                     version = version + .1;
-										var type = "D"; // Designer annotation
-										var file_id = $("#design").attr("data-fileid");
+                    var type = "D"; // Designer annotation
+					var file_id = $("#design").attr("data-fileid");
 
                     var x = rect.attr("x");
                     var y = rect.attr("y");
@@ -38,11 +40,15 @@ var imageOverlayer = (function() {
                     
                     var ix =  x + width - 40;
                     var iy = y;
-                    
-										var region = {x:x,y:y,width:width,height:height,type:type,file:file_id};
+					var region = {x:x,y:y,width:width,height:height,type:type,file:file_id};
 
-                    rect = paper.rect(ix,iy, 40, 20).attr({"fill": "#FF9900","stroke":"#FF9900"}); 
+        
+                   
+                    rect = paper.rect(ix,iy, 40, 20).attr({"fill": stroke,"stroke":stroke}); 
+                    text =  paper.text(ix + 23 ,iy + 13,"3.0").attr({stroke: "#FFF", "font-size": "14" });
                     container.push(rect);
+                    
+              
                     Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container, region:region, type:type,file:file_id});   
                     comments.general.push(container);
                     container = null;
@@ -53,6 +59,9 @@ var imageOverlayer = (function() {
         };
 	});
 	return {
+	    add : function() {
+	        
+	    },
 	    clear : function() {
 	        for(var i = 0, ii = comments.general.length; i < ii; i++) {
 	            comments.general[i].remove();

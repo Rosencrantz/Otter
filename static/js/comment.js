@@ -1,7 +1,7 @@
 (function() {
    
 		var addComment = function(comment) {
-				
+				Raphael.eve("comment.added");
 				$.ajax({
 						url : '/add/comments',
 						dataType : 'json',
@@ -23,8 +23,8 @@
 				
 				// Form
 				$("#comment-submit").one('click', function(e) {
-            e.preventDefault();
-						
+                        e.preventDefault();
+					
 						commentDialog.addClass("loading");
             		
 						var region = {
@@ -39,28 +39,28 @@
 
 						var comment = {
 								"version" : opts.version,
-                "name": "danj@otter.com",
-                "text" : commentDialog.find("#comment").val()
-            };
+                                "name": "danj@otter.com",
+                                "text" : commentDialog.find("#comment").val()
+                        };
 
 						var addcomment = {"addcomment": {"region":region, "comment":comment}};
 
 						addComment(addcomment);
 						
-						Raphael.eve.on("comment.added", function() {
-								$.tmpl( template , comment).appendTo("#annotation1")    
-								commentDialog.removeClass("loading");
-								commentDialog.addClass("success");
-
-
-								commentDialog.fadeOut(200, function() {
-										$(this).find("#comment").val("");
-										$(this).removeClass("success");
-								});
-						});
-
+					
             return false;
         });    
+        	Raphael.eve.on("comment.added", function() {
+					$.tmpl( template , comment).appendTo("#annotation1")    
+					commentDialog.removeClass("loading");
+					commentDialog.addClass("success");
+
+
+					commentDialog.fadeOut(200, function() {
+							$(this).find("#comment").val("");
+							$(this).removeClass("success");
+					});
+			});
         
 				$("#comment-cancel").one(function() {
 						opts.rect.remove();
