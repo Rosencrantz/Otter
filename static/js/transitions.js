@@ -26,6 +26,10 @@
    });
 
    $(document).bind('click', function(e) {
+       if($(e.target).attr('type') == 'checkbox') {
+           $(e.target).closest('section').fadeOut();
+       }
+
        switch(e.target.id) {
             case 'toggleVersionHistory':
                 e.preventDefault();
@@ -38,6 +42,7 @@
             case 'showCompleteList':
                 e.preventDefault();
                 $(e.target).trigger('showCompleteList');
+                break;
             case 'showProjects':
                 e.preventDefault();
                 $(e.target).trigger('showProjects');
