@@ -436,7 +436,7 @@ button.comments.off {
 #annotations article footer {
     width: 100%;
     position: relative;
-    padding: 10px 0 20px 0;
+    padding: 10px 0 25px 0;
 }
 
 #annotations article footer .buttons {
@@ -446,23 +446,34 @@ button.comments.off {
 }
 
 #annotations article footer .buttons a:first-child {
-    padding-right: 5px;
-}
-
-#annotations article footer .buttons .reply {
-    display: inline-block;
-    background: url(/static/images/reply_icon.png) no-repeat left 1px;
-    padding-left: 23px;
-
+    padding-right: 10px;
 }
 
 #annotations article footer .buttons .create {
     display: inline-block;
-    background: url(/static/images/create_icon.png) no-repeat left 1px;
-    padding-left: 23px 
+    background: url(/static/images/sprite_icons.png) no-repeat -3px -601px;
+    padding-left: 23px;
+    color: #333;
 
 }
 
+#annotations article footer .buttons .reply {
+    display: inline-block;
+    background: url(/static/images/sprite_icons.png) no-repeat -3px -701px;
+    padding-left: 23px;
+    color: #333;
+}
+
+#annotations article footer .buttons .create:hover {
+    background: url(/static/images/sprite_icons.png) no-repeat -3px -651px;
+    color: #339;
+
+}
+
+#annotations article footer .buttons .reply:hover {
+    background: url(/static/images/sprite_icons.png) no-repeat -3px -751px;
+    color: #339;
+}
 footer {
     clear: left;
     width: 100%;
