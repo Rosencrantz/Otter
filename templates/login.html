@@ -1,0 +1,23 @@
+<html>
+
+	<head></head>
+
+  <body>
+
+      <h1>Login</h1>
+			{% if error %}
+			<p>Invalid username or password</p>
+			{% endif %}
+			<form name="login" method="post">
+				<label forId="email">email:</label>
+				<input type="text" name="email" id="email">
+				<label forId="password">password:</label>
+				<input type="password" name="password" id="password">
+
+				<input type="submit" value="Login">
+			</form>
+
+  </body>
+
+
+</html>

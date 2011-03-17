@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'fedex.views.index', name='home'),
+    url(r'^login$', 'fedex.views.login', name='login'),
     url(r'^upload/', 'fedex.views.upload', name='upload'),
     url(r'^/add/comments','fedex.comments.add',name="add"),
     url(r'^add/revision','fedex.revisions.add',name="addrevision"),

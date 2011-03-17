@@ -1,6 +1,6 @@
 from django.contrib import admin
 from fedex.models import *
-from django.contrib.auth.models import * 
+from django.contrib.auth.models import User 
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('user_display_name','email')
@@ -25,7 +25,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('comment','user')
     pass
 
-admin.site.register(OtterUser, UserAdmin)
+admin.site.register(User, UserAdmin)
 admin.site.register(Agency, AgencyAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Revision, RevisionAdmin)

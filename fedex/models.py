@@ -1,6 +1,5 @@
 from django.db import models
-#from django.contrib import admin
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class OtterUser(models.Model):
@@ -41,7 +40,7 @@ class Region(models.Model):
     files = models.ForeignKey(File)
     
 class Comment(models.Model):
-    user = models.OneToOneField(OtterUser)
+    user = models.OneToOneField(User)
     comment = models.CharField(max_length=10000)
     region = models.ForeignKey(Region)
     created_at = models.DateField()
