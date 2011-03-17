@@ -12,7 +12,8 @@
                 "text" : document.getElementById("comment").value
             }
             $.tmpl( template , comment).appendTo("#annotation1")    
-            
+             commentDialog.style.display = "none";
+             document.getElementById("comment").value = ""
             return false;
         }    
     });
@@ -34,6 +35,8 @@
                     "text" : document.getElementById("comment").value
                 }
                 var a =  $.tmpl( template , comment);
+                commentDialog.style.display = "none";
+                document.getElementById("comment").value = ""
                 insertAfter.after(a);
             }
        });

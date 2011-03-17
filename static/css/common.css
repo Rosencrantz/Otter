@@ -80,7 +80,7 @@ button.comments.off {
 
 
 
-#dialogs .addTask, 
+#dialogs .dragFile, 
 #dialogs .comment,
 #dialogs .explain {
     display: none;
