@@ -4,7 +4,8 @@ var uploader = (function(dropzoneid) {
     function preview(e) {
         var container = document.getElementById("design");
         var img = container.firstElementChild;
-        img.src = e.srcElement.result;
+        overlayer.loadImage(e.srcElement.result);
+        overlayer.clear();
     }
 
     dropzone.addEventListener('dragenter', function(e) {
