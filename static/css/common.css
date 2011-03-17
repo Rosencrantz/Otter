@@ -153,8 +153,6 @@ button.comments.off {
     display: none;
 }
 
-
-
 #page,
 #content,
 #annotations .item {
@@ -179,7 +177,6 @@ button.comments.off {
 #page > header {
     min-height: 72px;
     width: 100%;
-    overflow: hidden;
     padding-bottom: 32px;
 }
 
@@ -238,6 +235,44 @@ button.comments.off {
     border-right: 1px dotted #333;
     padding: 0 9px 2px 0;
     margin-right: 5px;
+}
+
+#versionHistory {
+    position: absolute;
+    width: 45px;
+    display: block;
+    z-index: 2;
+    top: 36px;
+    box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.6);
+}
+
+#versionHistory li,
+#versionHistory a {
+    display: block;
+    width: 100%;
+    height: 23px;
+    text-align: center;
+}
+
+#versionHistory a:link,
+#versionHistory a:visited,
+#versionHistory a:focus,
+#versionHistory a:active
+{
+    text-transform: uppercase;
+    color: #333;
+    font-size: 0.8175em;
+    font-weight: bold;
+    background-color: #CCC;
+    padding: 7px 0 3px 0;
+    border-bottom: 1px dotted #666;
+    overflow-y: hidden;
+    box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.6);
+    -webkit-transition: margin 0.1s linear;
+}
+
+#versionHistory a:hover {
+    margin-left: 3px;
 }
 
 #screens li a:link,
