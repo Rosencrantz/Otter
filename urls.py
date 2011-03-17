@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^$', 'fedex.views.index', name='home'),
     url(r'^upload/', 'fedex.views.upload', name='upload'),
     url(r'^/add/comments','fedex.comments.add',name="add"),
+    url(r'^add/revision','fedex.revisions.add',name="addrevision"),
     url(r'^debug/','fedex.views.add_debug',name="debug")
     # url(r'^otter/', include('otter.foo.urls')),
 

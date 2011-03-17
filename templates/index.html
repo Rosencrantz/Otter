@@ -6,9 +6,14 @@
         <link type="text/css" rel="stylesheet" href="static/css/reset.css" />
         <link type="text/css" rel="stylesheet" href="static/css/common.css" />
 		<script src="static/js/upload.js"> </script>
+		<script src="static/js/r.js"></script>
+		<script src="static/js/overlay.js"></script>
+		<script src="static/js/comment.js"></script>
+
+		
     </head>
     <body>
-    <div id="page">
+	    <div id="page" data-revision="v1">
         <header>
             <div id="productHeader">
                 <a href="" id="logo"><img src="static/images/OtterLogoSmall.png" title="" alt="" /></a>
@@ -51,7 +56,6 @@
         </header>
         <div id="content">
             <section id="design">
-                <img src="/static/images/mockup.png" />
             </section>
             <aside id="tasks">
                 <header>
@@ -220,7 +224,7 @@
                     <button type="submit">Submit</button>
                 </form>
             </div>
-            <div class="dialog comment">
+            <div class="dialog comment" id="comment-dialog">
                 <header>
                     <h1>Comment</h1>
                     <button>Close</button>
@@ -250,6 +254,11 @@
             </div>
         </div>
     </div> 
+	 <script>
+		uploader("page");
+		var overlayer = imageOverlays("design");
+		overlayer.loadImage("/static/images/mockup.png");
+	 </script>
     </body>
 </html>
 

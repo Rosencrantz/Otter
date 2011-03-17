@@ -14,7 +14,7 @@ class Revision(models.Model):
 
 class File(models.Model):
     name = models.CharField(max_length=40)
-    filepath = models.CharField(max_length=40)
+    filedata = models.TextField()
     revisions = models.ForeignKey(Revision)
     
 class Region(models.Model):

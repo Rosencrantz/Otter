@@ -71,13 +71,22 @@ button.comments.off {
 }
 
 .dropdown,
-#dialogs,
 #tasks-done,
 #tasks time,
 #tasks header ul {
     display: none;
     position: absolute;
 }
+
+
+
+#dialogs .addTask, 
+#dialogs .comment,
+#dialogs .explain {
+    display: none;
+}
+
+
 
 #page,
 #content,
