@@ -12,6 +12,7 @@
 		<script src="static/js/r.js"></script>
 		<script src="static/js/overlay.js"></script>
 		<script src="static/js/comment.js"></script>
+        <script src="static/js/transitions.js"></script>
 		<script type="x-template" name="comment">
 	        <div class="item"> 
 	              <article class="explain"> 
@@ -51,11 +52,11 @@
                 <p>Dan Johnson</p>
             </div>
             <div id="toolbar">
-                <a href="#"><span>V3</span></a>
+                <a href="#" id="toggleVersionHistory">V3</a>
                 <ul id="versionHistory" class="dropdown">
                     <li><a href="#">V1</a></li>
                     <li><a href="#">V2</a></li>
-                    <li><a href="#">V3</a></li>
+                    <li><a href="#" class="on">V3</a></li>
                     <li><a href="#">V4</a></li>
                     <li><a href="#">V5</a></li>
                 </ul>
@@ -71,7 +72,7 @@
                         <button class="info on">On</button>
                         <button class="comments on">On</button>
                     </div>
-                    <button class="upload">Upload designs</button>
+                    <button class="upload on">Upload designs</button>
                 </div>
             </div>
         </header>
@@ -79,11 +80,54 @@
             <section id="design">
             </section>
             <aside id="tasks">
+                <div class="group">
                 <header>
-                <a href="" class="active">To do <span>43</span></a>
-                <a href="">Complete <span>10</span></a>
+                    <a href="" id="showTodoList" class="active">To do <span>43</span></a>
+                    <a href="" id="showCompleteList">Complete <span>10</span></a>
                 </header>
                 <div id="tasks-todo">
+                    <form id="" name="" action="" method="">
+                    <article id="">
+                        <section class="">
+                            <header>
+                                <h1>3.2 <time datetime="">17 mar 2011, 14:56</time></h1>
+                                <ul>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                </ul>
+                            </header>
+                            <p>This is some text, it's text, what are you going to do. Read it?</p>
+                            <fieldset>
+                                <legend></legend>
+                                <input type="checkbox" name="" id="" value="" />
+                                <label for="">Resolved</label>
+                            </fieldset>
+                        </section>
+                        <section class="">
+                            <header>
+                                <h1>3.1 <time datetime="">17 mar 2011, 14:56</time></h1>
+                                <ul>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                </ul>
+                            </header>
+                            <p>This is some more text, it's like the first text but different, and that's kinda important</p>
+                            <fieldset>
+                                <legend></legend>
+                                <input type="checkbox" name="" id="" value="" />
+                                <label for="">Resolved</label>
+                            </fieldset>
+                        </section>
+                        </article>
+                    </form>
+                </div>
+                <div id="tasks-done">
                     <form id="" name="" action="" method="">
                     <article id="">
                         <section class="">
@@ -125,28 +169,8 @@
                         </article>
                     </form>
                 </div>
-                <div id="tasks-done">
-                    <article id="">
-                        <section class="">
-                            <header>
-                                <time datetime="">17 mar 2011, 14:56</time>
-                            </header>
-                        </section>
-                        <section class="">
-                            <!--annotation-->
-                        </section>
-                        <section class="">
-                            <!--annotation-->
-                        </section>
-                        <section class="">
-                            <!--annotation-->
-                        </section>
-                        <section class="">
-                            <!--annotation-->
-                        </section>    
-                    </article>
                 </div>
-                <a href="#"></a>
+                <a href="#">&gt;</a>
             </aside>
         </div>
         <div id="annotations">
