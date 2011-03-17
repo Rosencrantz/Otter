@@ -9,10 +9,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-PROJECT_DIR = os.path.dirname(__file__)
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR, "templates"),
-)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -78,6 +75,9 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
+)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -107,11 +107,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'Otter.urls'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
