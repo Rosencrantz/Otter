@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'fedex.views.index', name='home'),
     url(r'^upload/', 'fedex.views.upload', name='upload'),
+    url(r'^/add/comments','fedex.comments.add',name="add"),
+    url(r'^debug/','fedex.views.add_debug',name="debug")
     # url(r'^otter/', include('otter.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
