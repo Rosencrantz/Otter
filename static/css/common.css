@@ -72,14 +72,26 @@ button.comments.off {
 
 .dropdown,
 #dialogs,
-#tasks-done {
+#tasks-done,
+#tasks time,
+#tasks header ul {
     display: none;
+    position: absolute;
+}
+
+#page,
+#content,
+#annotations .item {
+    position: relative;
+}
+
+#tasks,
+#annotations h1 img {
     position: absolute;
 }
 
 #page {
     margin: 0 auto;
-    position:relative;
 }
 
 #productHeader #logo {
@@ -92,12 +104,11 @@ button.comments.off {
     min-height: 72px;
     width: 100%;
     overflow: hidden;
-    padding-bottom: 15px;
+    padding-bottom: 32px;
 }
 
 #productHeader, #toolbar {
     width: 100%;
-    padding-left: 10px;
 }
 
 #productHeader {
@@ -117,6 +128,10 @@ button.comments.off {
     color: #FFF;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     margin-right: 30px;
+}
+
+#productHeader p:last-child {
+    margin-right: 10px;
 }
 
 #toolbar {
@@ -139,7 +154,7 @@ button.comments.off {
 #toolbar .buttons {
     position: absolute;
     top: 5px;
-    right: 30px; 
+    right: 10px; 
 }
 
 .buttons .group {
@@ -153,7 +168,7 @@ button.comments.off {
 #screens li a:visited,
 #screens li a:focus,
 #screens li a:active {
-    font-size: 0.8125em;
+    font-size: 0.8125em; /* 13px */
     color: #666;
     margin-right: 20px;
     min-height: 26px;
@@ -170,14 +185,20 @@ button.comments.off {
     color: #fff;
 }
 
-#design,
+#content,
 #annotations {
+    min-width: 800px;
+    margin: 0 285px 0 32px;
+}
+
+#design {
     width: 100%;
-    margin: 0 32px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 #tasks {
+    font-size: 0.8175em; /* 13px */
+    right: -285px;
     width: 253px;
 }
 
@@ -192,12 +213,149 @@ button.comments.off {
     width: 253px;
 }
 
+#tasks header > a {
+    display: inline-block;
+    border-radius: 3px 3px 0 0;
+    font-weight: bold;
+    line-height: 1.4;
+    text-transform: uppercase;
+    padding: 2px 8px 3px 8px;
+    background-color: #666;
+    border-bottom: 1px solid #333;
+    color: #ccc;
+    box-shadow: 2px 4px 5px 2px rgba(0,0,0,0.7);
+    margin-right: 10px;
+}
+
+#tasks header > a.active {
+    background-color: #ccc;
+    border-bottom: 1px solid #ccc;
+    color: #000;
+}
+
+#tasks header > a span {
+    display: inline-block;
+    border-radius: 3px;
+    margin: 3px;
+    padding: 0 3px;
+    line-height: 1.3;
+    background-color: #333;
+}
+
+#tasks header > a.active span {
+    background-color: #fff;
+}
+
+#tasks article section {
+    padding: 10px 0;
+    border-bottom: 1px dotted #333;
+}
+
+#tasks article section:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+#tasks article section header {
+    color: #339;
+    margin-bottom: 10px;
+}
+
+#tasks article section p {
+    color: #000;
+    line-height: 1.3;
+
+}
+
+#tasks article section fieldset {
+    padding-top: 10px;
+}
+
+#tasks article section fieldset input {
+    margin-left: 0;
+}
+
 #tasks-todo,
 #tasks-done {
     background-color: #CCC;
-    border-radius: 0 0 3px 3px;
-    width: 243px;
+    border-radius: 0 3px 3px 3px;
+    width: 223px;
+    padding: 5px 10px 15px 10px;
 }
+
+#annotations {
+    position: relative;
+    font-size: 0.8175em;
+    line-height: 1.4;
+    padding: 32px 0 0 20px;
+}
+
+#annotations header {
+    position: relative;
+}
+
+#annotations header img {
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    left: -20px;
+    box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.6);
+}
+
+#annotations header h1 {
+    position: absolute;
+    left: 50px;
+    top: -12px;
+    color: #CCC;
+    font-weight: bold;
+}
+
+#annotations article  {
+    padding-bottom: 50px;
+}
+
+#annotations .item .item {
+    margin-left: 20px;
+}
+
+#annotations article .group {
+    position: relative;
+    top: 10px;
+    background-color: #ccc;
+    border-radius: 3px;
+}
+
+#annotations article .annotationId {
+    width: 99.4%;
+    position: relative;
+    height: 7px;
+}
+
+#annotations article .annotationId span {
+    display: block;
+    position: absolute;
+    right: 0;
+    background-color: #339;
+    border-radius: 0 0 2px 2px;
+    padding: 3px 3px 0 3px;
+}
+
+#annotations article.explain .annotationId,
+#annotations article.explain .annotationId span {
+        color: #CCC;
+        background-color: #339;
+}
+
+#annotations article.comment .annotationId,
+#annotations article.comment .annotationId span {
+        color: #333;
+        background-color: #f90;
+}
+
+#annotations article .information {
+    margin: 15px 40px 0 40px;
+}
+
 footer {
     clear: left;
     width: 100%;
