@@ -13,7 +13,7 @@ def generate_next_revision(current_revision):
 def add(request):
     filename =  request.META["HTTP_FILE_NAME"]
     version = request.META["HTTP_REVISION"]
-    filedata = request.POST
+    filedata = request.raw_post_data
     a = models.Agency.objects.select_related().get(id=1)
     p = models.Project.objects.get(agency=a)
     version = generate_next_revision(version)
