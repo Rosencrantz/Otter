@@ -1,0 +1,120 @@
+body {
+    font-family: helvetica;
+    font-size: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+#productHeader p, 
+#productHeader a,
+#screens,
+#screens li,
+#screens li a,
+#toolbar a {
+    display: block;
+    float: left;
+}
+
+#productHeader p:last-child {
+    float: right;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+}
+
+#page {
+    margin: 0 auto;
+    width: 68em; /* 1100px; */
+    background-color: #333;
+    position:relative;
+}
+
+#productHeader #logo {
+    position: relative;
+    margin-top: -5px;
+    width: 96px;
+}
+
+#page > header {
+    min-height: 72px;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+#productHeader, #toolbar {
+    width: 100%;
+    padding-left: 10px;
+}
+
+#productHeader {
+    min-height: 26px;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#24375D), to(#242546));
+    margin-bottom: 1px;
+    padding-top: 10px;
+}
+
+#productHeader p,
+#productHeader a:link,
+#productHeader a:visited,
+#productHeader a:focus,
+#productHeader a:hover,
+#productHeader a:active {
+    font-size: 0.875em; /*12px*/
+    color: #FFF;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    margin-right: 30px;
+}
+
+#toolbar {
+    width: 100%;
+    position: relative;
+    min-height: 35px;
+    background: url(/static/images/toolbar.png) no-repeat left top, -webkit-gradient(linear, 0% 0%, 0% 20%, from(#9d9d9d), to(#cccccc));
+    margin-bottom: 1px;
+    box-shadow: 0px 10px 5px -5px rgba(0,0,0,0.6);
+}
+
+#toolbar > a:first-child {
+    color: #666;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    font-size: 1.5625em;
+}
+
+#toolbar .buttons {
+    position: absolute;
+    top: 5px;
+    right: 30px; 
+}
+
+#toolbar .buttons button {
+    border: 1px solid #bbb;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.4);
+    padding-left: 16px;
+}
+
+#screens li a:link,
+#screens li a:visited,
+#screens li a:focus,
+#screens li a:active {
+    font-size: 0.8125em;
+    color: #666;
+    margin-right: 20px;
+    min-height: 26px;
+    padding: 10px 5px 0 5px;
+}
+
+#screens li a:hover {
+    background-color: rgba(0,0,0,0.2);
+    color: #fff;
+}
+
+
