@@ -62,17 +62,10 @@
             return false;
         });    
         
-<<<<<<< HEAD
 				$("#comment-cancel").one(function() {
 						opts.rect.remove();
 				});
-=======
         
-    });
-    
-    $("#comment-cancel").click(function() {
-      container && container.remove();
->>>>>>> d9e4344be9699199d3a7b5c89e79b4c5cc21cf32
     });
     
 		$(document).ready(function() {

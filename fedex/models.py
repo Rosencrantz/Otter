@@ -41,7 +41,7 @@ class Region(models.Model):
     files = models.ForeignKey(File)
 
 class Comment(models.Model):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User)
     comment = models.CharField(max_length=10000)
     region = models.ForeignKey(Region)
     created_at = models.DateField()

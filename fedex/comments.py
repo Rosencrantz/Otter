@@ -1,6 +1,7 @@
 from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseServerError
 from fedex import models
+from datetime import date
 
 import simplejson
 
@@ -29,18 +30,18 @@ def add(request):
         # crete comment
         comment_text = comment['text']
         
-        file_obj = File.objects.get(id=file_id)
+        file_obj = models.File.objects.get(id=file_id)
 
-        new_region = Region(x=xpos,y=ypos,width=width,height=height, \
+        new_region = models.Region(x=xpos,y=ypos,width=width,height=height, \
                 region_type=annotation_type,files=file_obj,title=region_title)
         new_region.save()
         
-        new_comment = Comment.objects.create(comment=comment_text,user=user,region=new_region)
+        new_comment = models.Comment.objects.create(comment=comment_text,user=user, \
+                region=new_region,created_at=date.today())
         new_comment.save()
 
         data = {}
+        return HttpResponse(simplejson.dumps(data), mimetype='application/json')
     except KeyError:
-        HttpResponseServerError("Malformed data!")
-    
-    HttpResponse(simplejson.dumps(data), mimetype='application/json')
-    
+        return HttpResponseServerError("Malformed data!")
+    pass 
