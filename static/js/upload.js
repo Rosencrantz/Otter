@@ -1,0 +1,3 @@
+var uploader = (function() {
+    
+});
