@@ -38,11 +38,15 @@ class Region(models.Model):
     )
     region_type = models.CharField(max_length=1, choices=annotation_type)
     files = models.ForeignKey(File)
+
+class OtterUser(User):
+    user_display_name = models.CharField(max_length=100)
     
 class Comment(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(OtterUser)
     comment = models.CharField(max_length=10000)
     region = models.ForeignKey(Region)
     created_at = models.DateField()
     parent = models.ForeignKey('self', null=True, related_name='parent_comment')
+
 
