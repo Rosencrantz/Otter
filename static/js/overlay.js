@@ -26,8 +26,11 @@ var imageOverlayer = (function() {
                 if(moved) {
 					//todo add some things for colour hover etc
               
-             
+										// TODO (fix); 
                     version = version + .1;
+										var type = "D"; // Designer annotation
+										var file_id = $("#design").attr("data-fileid");
+
                     var x = rect.attr("x");
                     var y = rect.attr("y");
                     var width = rect.attr("width");
@@ -36,9 +39,11 @@ var imageOverlayer = (function() {
                     var ix =  x + width - 40;
                     var iy = y;
                     
+										var region = {x:x,y:y,width:width,height:height,type:type,file:file_id};
+
                     rect = paper.rect(ix,iy, 40, 20).attr({"fill": "#FF9900","stroke":"#FF9900"}); 
                     container.push(rect);
-                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container});   
+                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container, region:region, type:type,file:file_id});   
                 }
                 pathObj = null;
             }
