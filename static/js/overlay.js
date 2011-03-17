@@ -54,5 +54,8 @@ var imageOverlays = (function(container) {
 				paper.rect(points[i].x, points[i].y, points[i].width,points[i].height);
 			}
 		}
+		clear : function() {
+		    paper.clear()
+		}
 	}
 });
