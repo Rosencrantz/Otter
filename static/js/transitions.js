@@ -27,7 +27,13 @@
 
    $(document).bind('click', function(e) {
        if($(e.target).attr('type') == 'checkbox') {
-           $(e.target).closest('section').fadeOut();
+           $(e.target).attr({checked:"true"});
+           var item = $(e.target).closest('section').clone();
+           item.appendTo("#tasks-done form article");
+           $(e.target).closest('section').fadeOut(400, function() {
+               $(this).remove();
+               Raphael.eve("update-todo-count");
+           });
        }
 
        switch(e.target.id) {

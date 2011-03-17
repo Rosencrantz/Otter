@@ -598,7 +598,8 @@ div.dialog.comment header {
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFA51F), to(#E18701));
 }
 
-div.dialog.dragFile header {
+div.dialog.dragFile header,
+div.dialog.addTodo header {
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#787878), to(#5A5A5A));
 }
 
@@ -631,7 +632,11 @@ div.dialog.dragFile header {
 
 .dialog #dragFilesHere {
     height: 200px;
-    background: url(/static/images/drag_files_here.png) no-repeat 50% 50%;
+    background: url(/static/images/drag_files_here.png) no-repeat 50% 10px;
     overflow: hidden;
     text-indent: -9999px;
+}
+
+.dialog #dragFilesHere.dragged {
+    background: url(/static/images/drag_files_here.png) no-repeat 50% -240px;
 }
