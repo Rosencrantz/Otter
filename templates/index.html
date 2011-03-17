@@ -13,6 +13,7 @@
 		<script src="static/js/overlay.js"></script>
 		<script src="static/js/comment.js"></script>
         <script src="static/js/transitions.js"></script>
+		<script src="static/js/version.js"></script>
 		<script type="x-template" name="comment">
 	        <div class="item"> 
 	              <article class="explain"> 
@@ -35,7 +36,12 @@
 		</script>
     </head>
     <body>
-	    <div id="page" data-revision="v1">
+		{% if current_version %}
+		     <div id="page" data-revision="{{ current_version }}">
+		{% else %}
+		     <div id="page" data-revision="v1">
+		{% endif %}
+	   
         <header>
             <div id="productHeader">
                 <a href="" id="logo"><img src="static/images/OtterLogoSmall.png" title="" alt="" /></a>
@@ -52,6 +58,7 @@
                 <p>Dan Johnson</p>
             </div>
             <div id="toolbar">
+<<<<<<< HEAD
                 <a href="#" id="toggleVersionHistory">V3</a>
                 <ul id="versionHistory" class="dropdown">
                     <li><a href="#">V1</a></li>
@@ -59,6 +66,18 @@
                     <li><a href="#" class="on">V3</a></li>
                     <li><a href="#">V4</a></li>
                     <li><a href="#">V5</a></li>
+=======
+				{% if current_version %}
+				 <a href="#"><span>{{ current_version }}</span></a>
+				{% else %}
+				    <a href="#"><span>V1</span></a>
+				{% endif %}
+               
+                <ul id="versionHistory" class="dropdown">
+					{% for rev in revisions %}
+                    	<li><a href="#" class="version-item">{{ rev.revision_number}}</a></li>
+					{% endfor %}
+>>>>>>> 5d8e6331cb1a5b8d588639e81864f6e38168de57
                 </ul>
                 <ul id="screens">
                     <li><a href="">Homepage</a></li>
@@ -288,8 +307,8 @@
                         <textarea id="comment"></textarea>
                     </fieldset>
                     <div class="buttons">
-                        <button type="cancel">cancel</button>
-                        <button type="submit">Submit</button>
+                        <button type="cancel" id="comment-cancel">cancel</button>
+                        <button type="submit" id="comment-submit">Submit</button>
                     </div>
                 </form>
             </div>

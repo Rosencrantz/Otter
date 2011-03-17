@@ -34,12 +34,19 @@ admin.site.register(File, FileAdmin)
 admin.site.register(Region, RegionAdmin)
 admin.site.register(Comment, CommentAdmin)
 
-adminUser = User.objects.get(username__exact='admin')
-if not adminUser:
-    User.objects.create_user('admin', 'admin@otter.com', 'admin')
-    adminUser.is_staff = True
-    adminUser.save()
-else:
-    adminUser.set_password('admin')
-    adminUser.save()	
+def createUser(username,firstname,lastname,email,staff=False):
+    try:
+    	user = User.objects.get(username__exact=username)
+    except User.DoesNotExist:
+	user = User.objects.create_user(username,email,'password')
+    	user.first_name = firstname
+    	user.last_name = lastname
+    	user.email = email
+    	user.is_staff = staff
+    	user.save()
+	
 
+
+createUser('admin','Admin','','admin@otter.com',True)
+createUser('danj@otter.com','Dan','Johnson','danj@otter.com',False)
+createUser('gsmith@otter.com','Granny','Smith','gsmith@otter.com',False)

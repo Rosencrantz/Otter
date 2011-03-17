@@ -234,7 +234,7 @@ button.comments.off {
 #toolbar .buttons {
     position: absolute;
     top: 5px;
-    right: 10px; 
+    right: 8px; 
 }
 
 .buttons .group {
@@ -319,8 +319,7 @@ button.comments.off {
 }
 
 #design {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid #000;
 }
 
 #tasks {

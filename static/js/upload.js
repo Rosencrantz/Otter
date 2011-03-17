@@ -1,5 +1,5 @@
 var uploader = (function(dropzoneid) {
-    var dropzone = document.getElementById(dropzoneid);
+    var dropzone = document.getElementById(dropzoneid), bound = false;
     
     function preview(e) {
         var container = document.getElementById("design");
@@ -24,7 +24,9 @@ var uploader = (function(dropzoneid) {
              $(this).css({"background-color": ""});
          });
         
-        
+  
+        if(!bound) {
+        bound = true;
          $("#dragFilesHere")[0].addEventListener("drop",function(e) {
                    var xhr = new XMLHttpRequest(),
                       	fileUpload = xhr.upload;
@@ -53,7 +55,9 @@ var uploader = (function(dropzoneid) {
                               }
                           }
                       }
+                      return false;
          },false);
+     }
           
           
          
