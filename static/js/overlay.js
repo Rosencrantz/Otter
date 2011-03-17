@@ -40,7 +40,7 @@ var imageOverlayer = (function() {
                     
                     var ix =  x + width - 40;
                     var iy = y;
-					var region = {x:x,y:y,width:width,height:height,type:type,file:file_id};
+					var region = {x:x,y:y,width:width,height:height,type:backendType,file:file_id};
 
                 
                    
