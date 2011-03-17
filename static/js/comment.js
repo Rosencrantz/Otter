@@ -16,6 +16,10 @@
              document.getElementById("comment").value = ""
             return false;
         }    
+        
+        $("#comment-cancel").click(function() {
+           opts.rect.remove();
+        });
     });
     
     $(document).ready(function() {

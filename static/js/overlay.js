@@ -6,9 +6,11 @@ var imageOverlayer = (function() {
 				x = e.clientX,
 				y = e.clientY,
 				rect = paper.rect(x - 10,y -100, 1, 1).attr({stroke:"#FF9900","stroke-width":3});
-
+                var container = paper.set();
+                container.push(rect);
             this.onmousemove = function(e) {
                 moved = true;
+                     
 				var dx = e.clientX - x,
 					dy = e.clientY - y;
 				if(dx < 0 || dy < 0) {
@@ -23,8 +25,8 @@ var imageOverlayer = (function() {
                 this.onmousemove = null;
                 if(moved) {
 					//todo add some things for colour hover etc
-                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: rect});   
-                    rects.push(rect);  
+              
+             
                     version = version + .1;
                     var x = rect.attr("x");
                     var y = rect.attr("y");
@@ -35,6 +37,8 @@ var imageOverlayer = (function() {
                     var iy = y;
                     
                     rect = paper.rect(ix,iy, 40, 20).attr({"fill": "#FF9900","stroke":"#FF9900"}); 
+                    container.push(rect);
+                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container});   
                 }
                 pathObj = null;
             }
