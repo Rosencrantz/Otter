@@ -12,7 +12,7 @@ a {
     font-family: "helvetica neue";
     font-size: 0.8125em;
     height: 25px;
-    border: 1px solid #bbb;
+    border: 1px solid rgba(0,0,0,0.2);
     background-color: #fff;
     border-radius: 3px;
     box-shadow: 2px 2px 2px -1px rgba(0,0,0,0.6);
@@ -21,15 +21,82 @@ a {
     color: #333;
     font-weight: bold;
     line-height: 1.6;
+    background: url(/static/images/sprite_icons.png) no-repeat 3px top;
 }
 
-button.on,
-button.off {
+button.info,
+button.comments {
     width: 60px; 
 }
 
-button.on {
+#toolbar button.info,
+#toolbar button.info.on {
+    background-color: #fff;
+    background-position: 3px 2px;
+}
 
+#toolbar button.comments,
+#toolbar button.comments.on {
+    background-color: #fff;
+    background-position: 3px -147px
+}
+
+#toolbar button.upload,
+#toolbar button.upload.on {
+    background-color: #fff;
+    background-position: 3px -298px;
+}
+
+#toolbar button.info.off {
+    background-position: 3px -98px;
+    background-color: #CCC;
+    color: #666;
+}
+
+#toolbar button.comments.off {
+    background-position: 3px -247px;
+    background-color: #CCC;
+    color: #666;
+}
+
+#toolbar button.upload.off {
+    background-position: 3px -398px;
+    background-color: #CCC;
+    color: #666;
+}
+
+#toolbar button.info:hover {
+    background-color: #339;
+    background-position: 3px -48px;
+    color: #fff;
+}
+
+#toolbar button.comments:hover {
+    background-color: #F90;
+    background-position: 3px -197px
+}
+
+#toolbar button.upload:hover {
+    background-color: #090;
+    background-position: 3px -348px;
+    color: #fff;
+}
+
+#toolbar button.info:active {
+    background-color: #006;
+    background-position: 3px -48px;
+    color: #fff;
+}
+
+#toolbar button.comments:active {
+    background-color: #E77714;
+    background-position: 3px -197px
+}
+
+#toolbar button.upload:active {
+    background-color: #060;
+    background-position: 3px -348px;
+    color: #fff;
 }
 
 button.off {
@@ -409,6 +476,7 @@ footer {
     border: 1px solid #fff;
     border-radius: 6px;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#CCCCCC));
+    box-shadow: 0 0 15px 6px rgba(0, 0, 0, 0.8);
 }
 
 .dialog header {
