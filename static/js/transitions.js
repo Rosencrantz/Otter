@@ -27,7 +27,10 @@
 
    $(document).bind('click', function(e) {
        if($(e.target).attr('type') == 'checkbox') {
+           var item = $(e.target).closest('section').clone();
+           $("#tasks-done form article").appendTo(item);
            $(e.target).closest('section').fadeOut();
+           
        }
 
        switch(e.target.id) {
