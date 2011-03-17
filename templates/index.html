@@ -7,6 +7,7 @@
         <link type="text/css" rel="stylesheet" href="static/css/common.css" />
 		<script src="static/js/upload.js"> </script>
     </head>
+    <body>
     <div id="page">
         <header>
             <div id="productHeader">
@@ -54,16 +55,15 @@
             </section>
             <aside id="tasks">
                 <header>
-                    <a href="">Todo (3)</a>
-                    <a href="">Done (42)</a>
+                <a href="" class="active">To do <span>43</span></a>
+                <a href="">Complete <span>10</span></a>
                 </header>
                 <div id="tasks-todo">
                     <form id="" name="" action="" method="">
                     <article id="">
                         <section class="">
                             <header>
-                                <time datetime="">17 mar 2011, 14:56</time>
-                                <a href="">Tools</a>
+                                <h1>2.2 <time datetime="">17 mar 2011, 14:56</time></h1>
                                 <ul>
                                     <li><a href="#">One</a></li>
                                     <li><a href="#">One</a></li>
@@ -72,23 +72,32 @@
                                     <li><a href="#">One</a></li>
                                 </ul>
                             </header>
-                            <div class="information">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
-                            <input type="checkbox" name="" id="" value="" />
-                            <label for="">Resolved</label>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+                            <fieldset>
+                                <legend></legend>
+                                <input type="checkbox" name="" id="" value="" />
+                                <label for="">Resolved</label>
+                            </fieldset>
                         </section>
                         <section class="">
-                            <!--annotation-->
+                            <header>
+                                <h1>2.1 <time datetime="">17 mar 2011, 14:56</time></h1>
+                                <ul>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">One</a></li>
+                                </ul>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+                            <fieldset>
+                                <legend></legend>
+                                <input type="checkbox" name="" id="" value="" />
+                                <label for="">Resolved</label>
+                            </fieldset>
                         </section>
-                        <section class="">
-                            <!--annotation-->
-                        </section>
-                        <section class="">
-                            <!--annotation-->
-                        </section>
-                        <section class="">
-                            <!--annotation-->
-                        </section>    
-                    </article>
+                        </article>
                     </form>
                 </div>
                 <div id="tasks-done">
@@ -96,6 +105,7 @@
                         <section class="">
                             <header>
                                 <time datetime="">17 mar 2011, 14:56</time>
+                            </header>
                         </section>
                         <section class="">
                             <!--annotation-->
@@ -119,36 +129,46 @@
                 <div class="item">
                     <article class="explain">
                         <header>
-                            <h1><img src="" title="" alt="" />Dave O'Flynn <time datetime="">Sometime</time></h1>
+                            <img src="static/images/avatar.png" title="" alt="" /> 
+                            <h1>Dave O'Flynn</h1>
                         </header>
-                        <div class="information"></div>
+                        <div class="group">
+                        <div class="annotationId"><span>3.1</span></div>
+                        <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                         <footer>
                             <button>Reply</button>
                             <button>Add to tasks</button>
                         </footer>
+                        </div>
                     </article>
                     <div class="item">
                         <article class="comment">
                             <header>
-                            <h1><img src="" title="" alt="" />Dave O'Flynn <time datetime="">Sometime</time></h1>
+                                <img src="static/images/avatar.png" title="" alt="" /> 
+                                <h1>Dave O'Flynn</h1>
                             </header>
-                            <div class="information"></div>
+                            <div class="group">
+                            <div class="annotationId"><span>3.1</span></div>
+                            <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                             <footer>
                                 <button>Reply</button>
                                 <button>Add to tasks</button>
                             </footer>
+                            </div>
                         </article>
                     </div>
                     <div class="item">
                         <article class="comment">
+                            <div class="group">
                             <header>
                                 <h1><img src="" title="" alt="" />Dave O'Flynn <time datetime="">Sometime</time></h1>
                             </header>
-                            <div class="information"></div>
+                            <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                             <footer>
                                 <button>Reply</button>
                                 <button>Add to tasks</button>
                             </footer>
+                            </div>
                         </article>
                     </div>
                 </div>
@@ -216,5 +236,6 @@
             </div>
         </div>
     </div> 
+    </body>
 </html>
 
