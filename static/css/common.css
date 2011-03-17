@@ -50,19 +50,19 @@ button.comments {
     background-position: 3px -298px;
 }
 
-#toolbar button.info.off {
+#toolbar button.info {
     background-position: 3px -98px;
     background-color: #CCC;
     color: #666;
 }
 
-#toolbar button.comments.off {
+#toolbar button.comments {
     background-position: 3px -247px;
     background-color: #CCC;
     color: #666;
 }
 
-#toolbar button.upload.off {
+#toolbar button.upload {
     background-position: 3px -398px;
     background-color: #CCC;
     color: #666;
@@ -85,6 +85,14 @@ button.comments {
     color: #fff;
 }
 
+#toolbar button.comments:active,
+#toolbar button.upload:active,
+#toolbar button.info:active {
+    position: relative;
+    top: 1px;
+    left: 1px;
+}
+
 #toolbar button.info:active {
     background-color: #006;
     background-position: 3px -48px;
@@ -100,23 +108,6 @@ button.comments {
     background-color: #060;
     background-position: 3px -348px;
     color: #fff;
-}
-
-button.off {
-    background-color: #ccc;
-    color: #666;
-}
-
-button.upload {
-    background: #fff url(/static/images/upload_icon.png) no-repeat  5px 4px;
-}
-
-button.info.on {
-    background: #fff url(/static/images/info_icon.png) no-repeat  5px 4px;
-}
-
-button.comments.off {
-    background: #ccc url(/static/images/comment_icon_off.png) no-repeat  5px 4px;
 }
 
 #productHeader p, 
@@ -140,6 +131,7 @@ button.comments.off {
     float: right;
 }
 
+#dialogs,
 .dropdown,
 #tasks-done {
     display: none;
@@ -239,17 +231,24 @@ button.comments.off {
     width: 100%;
     position: relative;
     min-height: 35px;
-    background: url(/static/images/toolbar.png) no-repeat left top, -webkit-gradient(linear, 0% 0%, 0% 20%, from(#9d9d9d), to(#cccccc));
     margin-bottom: 1px;
     box-shadow: 0px 10px 5px -5px rgba(0,0,0,0.6);
+    background-color: #333;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#9d9d9d), to(#cccccc));
+
 }
 
 #toolbar > a:first-child {
+    z-index: 3;
     color: #666;
     position: absolute;
-    left: 10px;
-    top: 5px;
+    top: 0;
+    left: 0;
     font-size: 1.5625em;
+    background: url(/static/images/toolbar.png) no-repeat left top;
+    width: 90px;
+    height: 36px;
+    padding: 5px 0 0 5px;
 }
 
 #toolbar .buttons {
@@ -275,13 +274,15 @@ button.comments.off {
     opacity: 0;
     width: 45px;
     z-index: 2;
-    top: 36px;
+    bottom: 0;
     box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.6);
+    -webkit-transition: top 0.5s linear;
 }
 
 #versionHistory.on {
     opacity: 1;
     display: block;
+    top: 36px;
 }
 #versionHistory li,
 #versionHistory a {
@@ -561,10 +562,18 @@ footer {
     width: 100%;
 }
 
+#dialogs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    background-color: rgba(0,0,0,0.6); 
+}
+
 .dialog {
     position: absolute;
-    top: 200px;
-    left: 200px;
     width: 600px;
     border: 1px solid #fff;
     border-radius: 6px;
