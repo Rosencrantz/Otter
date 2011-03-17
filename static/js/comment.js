@@ -1,5 +1,7 @@
 (function() {
+    var container;
     Raphael.eve.on("overlayer.drawing.stop",function(opts) {
+        container = opts.rect;
         var commentDialog = document.getElementById("comment-dialog");
         commentDialog.style.display = "block";
         var button = document.getElementById("comment-submit");
@@ -17,9 +19,11 @@
             return false;
         }    
         
-        $("#comment-cancel").click(function() {
-           opts.rect.remove();
-        });
+        
+    });
+    
+    $("#comment-cancel").click(function() {
+      container && container.remove();
     });
     
     $(document).ready(function() {

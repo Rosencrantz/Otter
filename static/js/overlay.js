@@ -1,12 +1,12 @@
 var imageOverlayer = (function() {
-    var rects = [], version = 1.0;
+    var comments = {designer: [], general: []}, version = 1.0,container;
 	Raphael.eve.on("overlay.loaded.images",function(paper) {
 		paper.canvas.onmousedown = function(e) {
             var moved = false,
 				x = e.clientX,
 				y = e.clientY,
 				rect = paper.rect(x - 10,y -100, 1, 1).attr({stroke:"#FF9900","stroke-width":3});
-                var container = paper.set();
+                container = paper.set();
                 container.push(rect);
             this.onmousemove = function(e) {
                 moved = true;
@@ -25,8 +25,6 @@ var imageOverlayer = (function() {
                 this.onmousemove = null;
                 if(moved) {
 					//todo add some things for colour hover etc
-              
-             
                     version = version + .1;
                     var x = rect.attr("x");
                     var y = rect.attr("y");
@@ -38,7 +36,10 @@ var imageOverlayer = (function() {
                     
                     rect = paper.rect(ix,iy, 40, 20).attr({"fill": "#FF9900","stroke":"#FF9900"}); 
                     container.push(rect);
-                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container});   
+                    comments.general.push(container);
+                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container}); 
+                    container = null;
+                    container = paper.set();
                 }
                 pathObj = null;
             }
@@ -50,8 +51,20 @@ var imageOverlayer = (function() {
 	            rects[i].remove();
 	        }
 	        rects = [];
+	        container = paper.set();
 	        version = 1.0;
+	    },
+	    show : function(type) {
+	        for(var i = 0, ii = comments[type].length; i < ii; i++) {
+	            comments[type][i].show();
+	        }
+	    },
+	    hide : function(type) {
+	        for(var i = 0, ii = comments[type].length; i < ii; i++) {
+	            comments[type][i].hide();
+	        }
 	    }
+	    
 	}
 	
 })();
@@ -59,6 +72,29 @@ var imageOverlayer = (function() {
 
 var imageOverlays = (function(container) {
 	var image, paper, holder, currentImage;
+	
+	$(".buttons .group button").click(function(e) {
+	    var button = $(this);
+	    if(button.is('.info')) {
+	          if(button.hasClass("on")) {
+    	            imageOverlayer.hide("designer");
+    	             button.removeClass("on");
+    	        } else {
+    	            imageOverlayer.show("designer");
+    	            button.addClass("on");
+    	        }
+	    } else {
+	        if(button.hasClass("on")) {
+	            imageOverlayer.hide("general");
+	            button.removeClass("on");
+	        } else {
+	            imageOverlayer.show("general");
+	              button.addClass("on");
+	        }
+	    }
+	});
+	
+	
 	function getImage(path) {
 		var img = new Image();
 		img.src = path;
@@ -83,6 +119,9 @@ var imageOverlays = (function(container) {
 			for(var i = 0, ii = points.length; i < ii; i++) {
 				paper.rect(points[i].x, points[i].y, points[i].width,points[i].height);
 			}
+		},
+		toggleOverlays : function(type) {
+		    
 		},
 		clear : function() {
 		    imageOverlayer.clear();
