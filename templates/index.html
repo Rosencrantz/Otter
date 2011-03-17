@@ -5,12 +5,33 @@
         <title>Otter</title>
         <link type="text/css" rel="stylesheet" href="static/css/reset.css" />
         <link type="text/css" rel="stylesheet" href="static/css/common.css" />
+		<script src="static/js/jquery.js"></script>
+		<script src="static/js/jquery.tmpl.js"></script>
+		<script src="static/js/mustache.js"></script>
 		<script src="static/js/upload.js"> </script>
 		<script src="static/js/r.js"></script>
 		<script src="static/js/overlay.js"></script>
 		<script src="static/js/comment.js"></script>
-
-		
+		<script type="x-template" name="comment">
+	        <div class="item"> 
+	              <article class="explain"> 
+	                  <header>
+	                      <img src="static/images/avatar.png" title="" alt="" /> 
+	                      <h1>${name}</h1> 
+	                  </header> 
+	                  <div class="group"> 
+	                  <div class="annotationId"><span>${version}</span></div> 
+	                  <div class="information"> ${text} </div> 
+	                  <footer> 
+	                      <div class="buttons"> 
+	                          <a class="reply" href="">Reply</a> 
+	                          <a href="">Add to tasks</a> 
+	                      </div> 
+	                  </footer> 
+	                  </div> 
+	              </article> 
+	          </div> 
+		</script>
     </head>
     <body>
 	    <div id="page" data-revision="v1">
@@ -141,7 +162,7 @@
                         <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                         <footer>
                             <div class="buttons">
-                                <a href="">Reply</a>
+                                <a class="reply" href="">Reply</a>
                                 <a href="">Add to tasks</a>
                             </div>
                         </footer>
@@ -158,7 +179,7 @@
                             <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                             <footer>
                                 <div class="buttons">
-                                    <a href="">Reply</a>
+                                    <a class="reply" href="">Reply</a>
                                     <a href="">Add to tasks</a>
                                 </div>
                             </footer>
@@ -176,7 +197,7 @@
                             <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                             <footer>
                                 <div class="buttons">
-                                    <a href="">Reply</a>
+                                    <a class="reply" href="">Reply</a>
                                     <a href="">Add to tasks</a>
                                 </div>
                             </footer>
@@ -195,7 +216,7 @@
                         <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                         <footer>
                             <div class="buttons">
-                                <a href="">Reply</a>
+                                <a class="reply" href="">Reply</a>
                                 <a href="">Add to tasks</a>
                             </div>
                         </footer>
@@ -229,7 +250,7 @@
                     <h1>Comment</h1>
                     <button>Close</button>
                 </header>
-                <form id="" name="" action="" method="">
+                <form id="comment-submit" name="" action="" method="">
                     <fieldset>
                         <legend>Comment</legend>
                         <label for="comment">Comment</label>
