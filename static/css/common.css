@@ -1,10 +1,52 @@
 body {
-    font-family: helvetica;
+    font-family: "helvetica neue";
     font-size: 100%;
+    background: url(/static/images/bg_tile.png) repeat left top;
 }
 
 a {
     text-decoration: none;
+}
+
+button {
+    font-family: "helvetica neue";
+    font-size: 0.8125em;
+    height: 25px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px -1px rgba(0,0,0,0.6);
+    padding-left: 26px;
+    text-transform: uppercase;
+    color: #333;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+button.on,
+button.off {
+    width: 60px; 
+}
+
+button.on {
+
+}
+
+button.off {
+    background-color: #ccc;
+    color: #666;
+}
+
+button.upload {
+    background: #fff url(/static/images/upload_icon.png) no-repeat  5px 4px;
+}
+
+button.info.on {
+    background: #fff url(/static/images/info_icon.png) no-repeat  5px 4px;
+}
+
+button.comments.off {
+    background: #ccc url(/static/images/comment_icon_off.png) no-repeat  5px 4px;
 }
 
 #productHeader p, 
@@ -12,24 +54,31 @@ a {
 #screens,
 #screens li,
 #screens li a,
-#toolbar a {
+#toolbar a,
+#design,
+#annotations,
+#tasks header,
+#tasks-done,
+#tasks-todo {
     display: block;
     float: left;
 }
 
-#productHeader p:last-child {
+#productHeader p:last-child,
+#tasks,
+#tasks > a {
     float: right;
 }
 
-.dropdown {
+.dropdown,
+#dialogs,
+#tasks-done {
     display: none;
     position: absolute;
 }
 
 #page {
     margin: 0 auto;
-    width: 68em; /* 1100px; */
-    background-color: #333;
     position:relative;
 }
 
@@ -93,12 +142,11 @@ a {
     right: 30px; 
 }
 
-#toolbar .buttons button {
-    border: 1px solid #bbb;
-    background-color: #fff;
-    border-radius: 3px;
-    box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.4);
-    padding-left: 16px;
+.buttons .group {
+    float: left;
+    border-right: 1px dotted #333;
+    padding: 0 9px 2px 0;
+    margin-right: 5px;
 }
 
 #screens li a:link,
@@ -113,8 +161,44 @@ a {
 }
 
 #screens li a:hover {
+    background-color: rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 1px rgba(255,255,255, 0.8);
+}
+
+#screens li a:active {
     background-color: rgba(0,0,0,0.2);
     color: #fff;
 }
 
+#design,
+#annotations {
+    width: 100%;
+    margin: 0 32px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
+#tasks {
+    width: 253px;
+}
+
+#tasks > a {
+    display: block;
+    width: 10px;
+    height: 50px;
+
+}
+
+#tasks header {
+    width: 253px;
+}
+
+#tasks-todo,
+#tasks-done {
+    background-color: #CCC;
+    border-radius: 0 0 3px 3px;
+    width: 243px;
+}
+footer {
+    clear: left;
+    width: 100%;
+}
