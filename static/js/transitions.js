@@ -4,7 +4,12 @@
    } 
 
    $(document).bind('versionHistory', function(e) {
-       $('#versionHistory').toggleClass('on');
+       $('#toggleVersionHistory').toggleClass('on');
+       if($('#toggleVersionHistory').hasClass('on')) {
+            $('#versionHistory').css({"bottom": -$('#versionHistory').height() + 1});
+        } else {
+            $('#versionHistory').css({"bottom": 0});
+        }
    });
   
    $(document).bind('showTodoList', function(e) {
