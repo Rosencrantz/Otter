@@ -14,7 +14,7 @@ $(document).ready(function() {
         $("#toggleVersionHistory").text(val);
         $("#page").attr({"data-revision": val});
         e.preventDefault();
-        
+        var fileid;
         $.ajax({
           url: "/get/files/" + val,
           datatype: "json",
@@ -23,11 +23,21 @@ $(document).ready(function() {
               var something = JSON.parse(data);
               overlayer.loadImage(something[0].fields.filedata);
               $("#design").attr({"data-fileid":something[0].pk})
-             
+              fileid = something[0].pk;
+              $.ajax({
+                  url: "/get/comments/" + fileid,
+                      success: function(data) {
+                          if(data) {
+                              Raphael.eve("render-regions",window,data);
+                          }
+                      }
+               });
               //load comments
               //load overlays
           },
         });
+        
+     
         
         
     });
