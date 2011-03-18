@@ -127,8 +127,12 @@
 						});
 			});*/
         
-				$("#comment-cancel").one(function() {
+				$("#comment-cancel").one('click',function() {
 						opts.rect.remove();
+						  $("#dialogs").fadeOut('fast', function() {
+                                    commentDialog.find("#comment").val("");   
+                            });
+						
 				});
         
     });
