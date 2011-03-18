@@ -1,6 +1,8 @@
 var imageOverlayer = (function() {
     var comments = {designer: [], general: []}, version = 1,container, type, stroke,revision, versionString, overallpaper;
-
+    Raphael.eve.on("new-version", function(data) {
+        version = data;
+    });
     Raphael.eve.on("render-regions",function(data) {
         comments = {designer: [], general: []};
         for(var i = 0, ii = data.length; i < ii; i++) {
