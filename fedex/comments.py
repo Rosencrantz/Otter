@@ -2,11 +2,37 @@ from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseServerError
 from fedex import models
 from datetime import date
+from django.core import serializers
+
 
 from django.utils import simplejson
 
-def get(request):
-    pass
+def get(request, fileid=None):
+
+    user = request.user
+    print "file id"
+    print fileid
+
+    if fileid:
+        ## file
+        regions = models.Region.objects.filter(files=fileid)
+        comments = []
+        for region in regions:
+            print region
+            comment = models.Comment.objects.filter(region=region)
+            print comment
+            comments.append(comment)
+
+        print comments
+ #       comments = models.Comment.objects.get(region
+        data = {"regions":regions,"comments":comments}
+        return HttpResponse(serializers.serialize("json", regions), 'application/json')
+    else:
+        data = {}
+        return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+        ## no file
+    
+
 
 def add(request):
 

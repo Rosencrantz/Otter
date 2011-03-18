@@ -38,7 +38,7 @@ var imageOverlayer = (function() {
                     var width = rect.attr("width");
                     var height = rect.attr("height");
                     
-                    var ix =  x + width - 40;
+                   var ix =  x + width - 40;
                     var iy = y;
 					var region = {x:x,y:y,width:width,height:height,type:backendType,file:file_id};
 
@@ -95,7 +95,6 @@ var imageOverlayer = (function() {
 	
 })();
 
-
 var imageOverlays = (function(container) {
 	var image, paper, holder, currentImage;
 	
@@ -104,17 +103,21 @@ var imageOverlays = (function(container) {
 	    if(button.is('.info')) {
 	          if(button.hasClass("on")) {
     	            imageOverlayer.hide("designer");
+                    button.text('off');
     	             button.removeClass("on");
     	        } else {
     	            imageOverlayer.show("designer");
+                    button.text('on');
     	            button.addClass("on");
     	        }
 	    } else {
 	        if(button.hasClass("on")) {
 	            imageOverlayer.hide("general");
+                button.text('off');
 	            button.removeClass("on");
 	        } else {
 	            imageOverlayer.show("general");
+                  button.text('on');
 	              button.addClass("on");
 	        }
 	    }
