@@ -6,17 +6,33 @@
     
         Raphael.eve.on("render-comments",function(data) {
            $("#annotation1").text(''); 
+           var max_version = 1;
+           var versions = [];
            for (var i = data.length - 1; i >= 0; i--){
+     
              var comment ={
-               name : "some name",
-               text : data[i].fields.comment,
-               version : "1.1"
+               name : data[i].displayname,
+               text : data[i].comment,
+               version : data[i].version
             }
+            versions.push(data[i].version);
             
             	var template =$("script[name='comment']")[0].text;
                 var item = $.tmpl( template , comment).appendTo("#annotation1");
-            
-           };
+           
+           
+           }
+           
+           for (var i=0; i < versions.length; i++) {
+               var myversion =  versions[i].split(".")[1];
+               if(myversion > max_version) {
+                   max_version = myversion;
+               }
+               
+           }
+           max_version++;
+           Raphael.eve("new-version",window,max_version);
+           
         });
 
         var center = function(element, callback) {
@@ -127,12 +143,12 @@
 						});
 			});*/
         
-				$("#comment-cancel").one('click',function() {
+				$("#comment-cancel").one('click',function(e) {
 						opts.rect.remove();
 						  $("#dialogs").fadeOut('fast', function() {
                                     commentDialog.find("#comment").val("");   
                             });
-						
+						e.preventDefault();
 				});
         
     });

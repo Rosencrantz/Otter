@@ -1,6 +1,8 @@
 var imageOverlayer = (function() {
     var comments = {designer: [], general: []}, version = 1,container, type, stroke,revision, versionString, overallpaper;
-
+    Raphael.eve.on("new-version", function(data) {
+        version = data;
+    });
     Raphael.eve.on("render-regions",function(data) {
         comments = {designer: [], general: []};
         for(var i = 0, ii = data.length; i < ii; i++) {
@@ -14,6 +16,11 @@ var imageOverlayer = (function() {
             container.push(boundingRect);
             container.push(rect);
             container.push(text);
+            text.click(function() {
+                var item = text.node.firstElementChild.textContent;
+                
+                $('html,body').animate({ scrollTop: $('.annotationId[data-version-id="' + item +'"]').offset().top }, { duration: 'slow', easing: 'swing'});
+            });
             comments[data[i].fields.region_type == "D" ? "designer" : "general"].push(container);
         }
     });
@@ -28,7 +35,7 @@ var imageOverlayer = (function() {
             var moved = false,
 				x = e.clientX,
 				y = e.clientY,
-				rect = paper.rect(x - 10,y -100, 1, 1).attr({stroke:stroke,"stroke-width":3});
+				rect = paper.rect(x - 110,y -100, 1, 1).attr({stroke:stroke,"stroke-width":3});
                 container = paper.set();
                 container.push(rect);
             this.onmousemove = function(e) {
@@ -36,7 +43,7 @@ var imageOverlayer = (function() {
 				var dx = e.clientX - x,
 					dy = e.clientY - y;
 				if(dx < 0 || dy < 0) {
-					rect.attr({x: e.clientX - 10, y: e.clientY - 100, width: Math.abs(dx), height: Math.abs(dy) })
+					rect.attr({x: e.clientX - 110, y: e.clientY - 100, width: Math.abs(dx), height: Math.abs(dy) })
 				} else {
 					rect.attr({width: dx,height: dy});
 				}
