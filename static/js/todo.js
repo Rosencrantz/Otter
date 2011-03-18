@@ -8,7 +8,7 @@ $(document).ready(function() {
     
      Raphael.eve("update-todo-count");
     
-    $("a.create").click(function(e) {
+    $("a.create").live("click", function(e) {
         e.preventDefault();
         var text = $(this).closest(".group").find(".information").text();
         var version = $(this).closest(".group").find(".annotationId span").text();
