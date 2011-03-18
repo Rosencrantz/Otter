@@ -295,14 +295,9 @@ button.comments {
     text-align: center;
 }
 
-#versionHistory a.on {
-    text-decoration: underline;
-}
-
 #versionHistory a:link,
 #versionHistory a:visited,
-#versionHistory a:focus,
-#versionHistory a:active
+#versionHistory a:focus
 {
     text-transform: uppercase;
     color: #333;
@@ -312,18 +307,29 @@ button.comments {
     padding: 7px 0 3px 0;
     border-bottom: 1px dotted #666;
     overflow-y: hidden;
-    box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.6);
+    box-shadow: 2px 2px 5px -3px rgba(0,0,0,0.6);
     -webkit-transition: margin 0.1s linear;
 }
 
-#versionHistory a:last-child {
+#versionHistory li:last-child a {
     border-bottom: 0;
+}
+
+#versionHistory a:active {
+    margin-left: 5px;
+}
+
+#versionHistory a.on {
+    background-color: #999;
+    margin-left: 3px;
 }
 
 #versionHistory a:hover {
     background-color: #999;
-    color: #FFF;
-    margin-left: 3px;
+}
+
+#screens {
+    margin-left: -30px;
 }
 
 #screens li a:link,
@@ -332,9 +338,8 @@ button.comments {
 #screens li a:active {
     font-size: 0.8125em; /* 13px */
     color: #666;
-    margin-right: 20px;
     min-height: 26px;
-    padding: 10px 5px 0 5px;
+    padding: 10px 15px 0 15px;
     -webkit-transition: background-color 0.2s linear;
 }
 
@@ -355,7 +360,8 @@ button.comments {
 }
 
 #design {
-    border: 1px solid #000;
+    width: 100%;
+    text-align: center;
 }
 
 #tasks {
@@ -385,12 +391,12 @@ button.comments {
     font-weight: bold;
     line-height: 1.4;
     text-transform: uppercase;
-    padding: 2px 8px 3px 8px;
+    padding: 2px 2px 3px 8px;
     background-color: #666;
     border-bottom: 1px solid #333;
     color: #ccc;
     box-shadow: 2px 4px 5px 2px rgba(0,0,0,0.7);
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 #tasks header > a.active {
@@ -403,7 +409,7 @@ button.comments {
     display: inline-block;
     border-radius: 3px;
     margin: 3px;
-    padding: 0 3px;
+    padding: 0 5px;
     line-height: 1.3;
     background-color: #333;
 }
@@ -443,10 +449,11 @@ button.comments {
 
 #tasks-todo,
 #tasks-done {
-    background-color: #CCC;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CCCCCC), to(#999999));
     border-radius: 0 3px 3px 3px;
     width: 223px;
     padding: 5px 10px 15px 10px;
+    box-shadow: 3px 9px 7px -1px rgba(0,0,0,0.6);
 }
 
 #annotations {
@@ -504,7 +511,7 @@ button.comments {
     right: 0;
     background-color: #339;
     border-radius: 0 0 2px 2px;
-    padding: 3px 3px 0 3px;
+    padding: 3px 6px 0 3px;
 }
 
 #annotations article.explain .annotationId,
