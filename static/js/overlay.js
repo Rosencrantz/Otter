@@ -1,9 +1,25 @@
 var imageOverlayer = (function() {
-    var comments = {designer: [], general: []}, version = 1,container, type, stroke,revision, versionString;
+    var comments = {designer: [], general: []}, version = 1,container, type, stroke,revision, versionString, overallpaper;
 
-        
+    Raphael.eve.on("render-regions",function(data) {
+        comments = {designer: [], general: []};
+        for(var i = 0, ii = data.length; i < ii; i++) {
+            stroke = data[i].fields.region_type == "D" ?  "#339" : "#FF9900";
+            container = overallpaper.set();
+            var boundingRect = overallpaper.rect(data[i].fields.x,data[i].fields.y,data[i].fields.width,data[i].fields.height).attr({stroke: stroke, "stroke-width" : 3});
+            var ix = data[i].fields.x + data[i].fields.width - 40;
+            var iy = data[i].fields.y; 
+            var rect = overallpaper.rect(ix,iy, 40, 20).attr({"fill": stroke,"stroke":stroke});
+            var text =  overallpaper.text(ix + 23 ,iy + 13,data[i].fields.title).attr({stroke: "#FFF", "font-size": "14" });
+            container.push(boundingRect);
+            container.push(rect);
+            container.push(text);
+            comments[data[i].fields.region_type == "D" ? "designer" : "general"].push(container);
+        }
+    });
 
 	Raphael.eve.on("overlay.loaded.images",function(paper) {
+	    overallpaper = paper;
 	    revision = $("#page").attr("data-revision").replace(/(v|V)/i,"");
 		paper.canvas.onmousedown = function(e) {
 		   
@@ -38,7 +54,7 @@ var imageOverlayer = (function() {
                     var width = rect.attr("width");
                     var height = rect.attr("height");
                     
-                   var ix =  x + width - 40;
+                    var ix =  x + width - 40;
                     var iy = y;
 					var region = {x:x,y:y,width:width,height:height,type:backendType,file:file_id};
 
@@ -46,6 +62,11 @@ var imageOverlayer = (function() {
                     versionString = revision + "." + version;
                     rect = paper.rect(ix,iy, 40, 20).attr({"fill": stroke,"stroke":stroke});
                     text =  paper.text(ix + 23 ,iy + 13,versionString).attr({stroke: "#FFF", "font-size": "14" });
+                    text.click(function() {
+                        var item = text.node.firstElementChild.textContent;
+                        
+                        $('html,body').animate({ scrollTop: $('.annotationId[data-version-id="' + item +'"]').offset().top }, { duration: 'slow', easing: 'swing'});
+                    });
                     version++;
                     container.push(rect);
                     container.push(text);
@@ -143,9 +164,6 @@ var imageOverlays = (function(container) {
 			for(var i = 0, ii = points.length; i < ii; i++) {
 				paper.rect(points[i].x, points[i].y, points[i].width,points[i].height);
 			}
-		},
-		toggleOverlays : function(type) {
-		    
 		},
 		clear : function() {
 		    imageOverlayer.clear();
