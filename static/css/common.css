@@ -313,7 +313,7 @@ button.comments {
     border-bottom: 1px dotted #666;
     overflow-y: hidden;
     box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.6);
-    -webkit-transition: margin, color, background-color 0.2s linear;
+    -webkit-transition: margin 0.1s linear;
 }
 
 #versionHistory a:last-child {
