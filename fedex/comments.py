@@ -5,6 +5,9 @@ from datetime import date
 
 from django.utils import simplejson
 
+def get(request):
+    pass
+
 def add(request):
 
     user = request.user
