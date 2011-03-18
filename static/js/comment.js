@@ -47,14 +47,17 @@
 		
 		Raphael.eve.on("comment.added", function(opts) {
 			var template =$("script[name='comment']")[0].text;
-                        $.tmpl( template , opts.comment.addcomment.comment).appendTo("#annotation1")    
-												var commentDialog = $("#comment-dialog");
+                        var item = $.tmpl( template , opts.comment.addcomment.comment).appendTo("#annotation1")    
+						var commentDialog = $("#comment-dialog");
                         commentDialog.removeClass("loading");
                         commentDialog.addClass("success");
+                       
+                        
 
                         $("#dialogs").fadeOut('fast', function() {
                                 commentDialog.find("#comment").val("");
                                 commentDialog.removeClass("success");
+                                $('html,body').animate({ scrollTop: $(item).offset().top }, { duration: 'slow', easing: 'swing'});
                         });
 
                 });

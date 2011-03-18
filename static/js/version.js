@@ -1,3 +1,12 @@
+var switchMode = function(mode) {
+    if(mode == "d") {
+        
+    } else {
+        
+    }
+}
+
+
 $(document).ready(function() {
     $(".version-item").click(function(e) {
         var val = $(this).text();
