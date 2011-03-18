@@ -138,28 +138,39 @@
     });
     
 	$(document).ready(function() {
-        $(".reply").click(function(e) {
+        $(".reply").live("click",function(e) {
             e.preventDefault();
             renderDialog($('#comment-dialog'), $('#dialogs'), 'comment');
+						var commentDialog = $("#comment-dialog");
 
             var button = document.getElementById("comment-submit");
-            var insertAfter = $(this).closest(".comment");
+            var insertAfter = $(this).closest(".explain");
+						var insertAA = $(this).parents('.explain');
 
-            button.onsubmit = function(e) {
+						var cversion = insertAfter.find(".annotationId").attr('data-version-id');
+						cversion += ".1";
+
+
+            $(button).one('click', function(e) {
                 e.preventDefault();
-           
+          var bbb = insertAfter; 
+					var ccc = insertAA;
                 var template =$("script[name='comment']")[0].text;
                 var comment = {
-                    "name": "something",
-                    "version": "1.1",
+                    "name": $("#display-name").text(),
+                    "version": cversion,
                     "text" : document.getElementById("comment").value
                 }
 
                 var a =  $.tmpl( template , comment);
-                commentDialog.style.display = "none";
-                document.getElementById("comment").value = ""
+                //commentDialog.hide();
+						  $("#dialogs").fadeOut('fast', function() {
+                                    commentDialog.find("#comment").val("");   
+                            });
+
+//document.getElementById("comment").value = "";
                 insertAfter.after(a);
-            }
+            });
        });
     }); 
     
