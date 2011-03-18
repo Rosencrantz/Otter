@@ -14,6 +14,22 @@
 		<script src="static/js/comment.js"></script>
         <script src="static/js/transitions.js"></script>
 		<script src="static/js/version.js"></script>
+		<script src="static/js/todo.js"></script>
+		<script type="x-template" name="todo">
+			<section class="">
+            	<header>
+                	<h1> ${version} <time datetime="">${date}</time></h1>
+            	</header>
+            <p>${text}</p>
+            	<fieldset>
+                	<legend></legend>
+                	<input type="checkbox" name="" id="" value="" />
+                	<label for="">Resolved</label>
+            	</fieldset>
+        	</section>
+		</script>
+		
+		
 		<script type="x-template" name="comment">
 	        <div class="item"> 
 	              <article class="explain"> 
@@ -152,7 +168,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
                             <fieldset>
                                 <legend></legend>
-                                <input type="checkbox" name="" id="" value="" />
+                                <input type="checkbox" name="" id="" value="" checked="checked"/>
                                 <label for="">Resolved</label>
                             </fieldset>
                         </section>
@@ -171,7 +187,7 @@
                             <fieldset>
                                 <legend></legend>
                                 <input type="checkbox" name="" id="" value="" />
-                                <label for="">Resolved</label>
+                                <label for="" checked="checked">Resolved</label>
                             </fieldset>
                         </section>
                         </article>
@@ -212,7 +228,6 @@
                             <div class="information">One night, the Potato family sat down to dinner--Mother Potato and her three daughters. Midway through the meal, the eldest daughter spoke up. "Mother Potato?" she said. "I have an announcement to make." </div>
                             <footer>
                                 <div class="buttons">
-
                                     <a class="create" href="">Create a todo</a>
                                     <a class="reply" href="">Reply</a>                              
                                 </div>
@@ -301,7 +316,7 @@
                     </div>
                 </form>
             </div>
-            <div class="dialog addTodo">
+            <!--div class="dialog addTodo">
                 <header>
                     <h1>Todo</h1>
                 </header>
@@ -316,7 +331,7 @@
                         <button type="submit">Submit</button>
                     </div>
                 </form>
-            </div>
+            </div-->
 
             <div class="dialog dragFile">
                 <header>

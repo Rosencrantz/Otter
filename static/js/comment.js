@@ -1,5 +1,5 @@
 (function() {
-   
+
         var center = function(element, callback) {
             var left = ($(window).width() / 2) - (element.width() / 2),
                 top = ($(window).height() / 2) - (element.height() / 2);
@@ -28,8 +28,11 @@
             });
         };
 
+				var unrender = function(veil) {
+						veil.fadeOut('fast', function() {});
+				}
+
 		var addComment = function(comment) {
-				Raphael.eve("comment.added");
 				$.ajax({
 						url : '/add/comments',
 						dataType : 'json',
@@ -37,19 +40,35 @@
 						type : 'post',
 						data : JSON.stringify(comment),
 						success : function() {
-						  Raphael.eve("comment.added");
+						  Raphael.eve("comment.added", this, {comment:comment});
 						}
 				});
 		}
+		
+		Raphael.eve.on("comment.added", function(opts) {
+			var template =$("script[name='comment']")[0].text;
+                        $.tmpl( template , opts.comment.addcomment.comment).appendTo("#annotation1")    
+												var commentDialog = $("#comment-dialog");
+                        commentDialog.removeClass("loading");
+                        commentDialog.addClass("success");
+
+                        $("#dialogs").fadeOut('fast', function() {
+                                commentDialog.find("#comment").val("");
+                                commentDialog.removeClass("success");
+                        });
+
+                });
+
 
 		Raphael.eve.on("overlayer.drawing.stop",function(opts) {
             renderDialog($('#comment-dialog'), $('#dialogs'), '');
-			var template =$("script[name='comment']")[0].text;
 				
 			// Form
 			$("#comment-submit").one('click', function(e) {
                 e.preventDefault();		
-				commentDialog.addClass("loading");
+				
+								var commentDialog = $("#comment-dialog");
+								commentDialog.addClass("loading");
             		
                 var region = {
                     "x" : opts.region.x,
@@ -70,30 +89,21 @@
                 var addcomment = {"addcomment": {"region":region, "comment":comment}};
                 addComment(addcomment);
                 
-                Raphael.eve.on("comment.added", function() {
-                        $.tmpl( template , comment).appendTo("#annotation1")    
-                        commentDialog.removeClass("loading");
-                        commentDialog.addClass("success");
-
-                        commentDialog.fadeOut(200, function() {
-                                $(this).find("#comment").val("");
-                                $(this).removeClass("success");
-                        });
-                });
-
+                
             return false;
         });    
-        	Raphael.eve.on("comment.added", function() {
-					$.tmpl( template , comment).appendTo("#annotation1")    
-					commentDialog.removeClass("loading");
-					commentDialog.addClass("success");
+/*        	Raphael.eve.on("comment.added", function() {
+						$.tmpl( template , comment).appendTo("#annotation1")    
+						var commentDialog = $("#comment-dialog");
+						commentDialog.removeClass("loading");
+						commentDialog.addClass("success");
 
 
-					commentDialog.fadeOut(200, function() {
-							$(this).find("#comment").val("");
-							$(this).removeClass("success");
-					});
-			});
+						$("#dialogs").fadeOut(fast, function() {
+								$(commentDialog).find("#comment").val("");
+								$(commentDialog).removeClass("success");
+						});
+			});*/
         
 				$("#comment-cancel").one(function() {
 						opts.rect.remove();
