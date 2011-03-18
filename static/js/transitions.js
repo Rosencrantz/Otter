@@ -32,7 +32,7 @@
 
    $(document).bind('click', function(e) {
        if($(e.target).attr('type') == 'checkbox') {
-           $(e.target).attr({checked:"true"});
+           $(e.target).attr({checked:"true", "disabled": "disabled"});
            var item = $(e.target).closest('section').clone();
            item.appendTo("#tasks-done form article");
            $(e.target).closest('section').fadeOut(400, function() {
