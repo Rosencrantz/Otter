@@ -2,6 +2,8 @@ from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 import re
 from fedex import models
+from django.contrib.auth.models import User
+
 
 def get_revs(project):
     revs = models.Revision.objects.filter(projects=project)
@@ -57,12 +59,19 @@ def index(request):
 
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login')
+
+    user = request.user
+    userObj = User.objects.get(username=user)
+
     project = get_project()
     revs, highest_rev = get_revs(project)
     t = loader.get_template('index.html')
+    print user
     c = Context({
          "current_version" : highest_rev,
-         "revisions" : revs
+         "revisions" : revs,
+         "username" : userObj.username,
+         "displayname" : userObj.get_full_name()
     })
     return HttpResponse(t.render(c))
     

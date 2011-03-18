@@ -82,7 +82,7 @@
 
 				var comment = {
                     "version" : opts.version,
-                    "name": "danj@otter.com",
+                    "name": $("#display-name").text(),
                     "text" : commentDialog.find("#comment").val()
                 };
 

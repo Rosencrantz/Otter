@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^add/revision','fedex.revisions.add',name="addrevision"),
     url(r'^get/files/(?P<revision>(v|V)\d+)/$', 'fedex.files.get'),
     url(r'^debug/','fedex.views.add_debug',name="debug"),
+    url(r'^get/comments/(?P<fileid>\d+)/$', 'fedex.comments.get'),
     # url(r'^otter/', include('otter.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
