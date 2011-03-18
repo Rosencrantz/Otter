@@ -1,8 +1,8 @@
 var switchMode = function(mode) {
     if(mode == "d") {
-        
+       $('body').attr('data-user-type',"designer"); 
     } else {
-        
+       $('body').attr('data-user-type',"general"); 
     }
 }
 

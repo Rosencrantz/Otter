@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseServerError
 from fedex import models
 from datetime import date
 from django.core import serializers
+from django.contrib.auth.models import User
+
 
 
 from django.utils import simplejson
@@ -30,12 +32,18 @@ def get(request, fileid=None):
         ## file
         regions = models.Region.objects.filter(files=fileid)
         comments = list()
+        data = []
         for region in regions:
-            comments.append(models.Comment.objects.get(region=region))
+            comment = models.Comment.objects.get(region=region)
+            comments.append(comment)
+            u = User.objects.get(id=comment.user.id)
+            data.append({"comment":comment.comment,"username":u.username,"displayname":u.get_full_name(),"version":region.title})
+
             
         print comments
         s = serializers.serialize
-        return HttpResponse(s("json", comments), 'application/json')
+        #return HttpResponse(s("json", comments), 'application/json')
+        return HttpResponse(simplejson.dumps(data), 'application/json')
     else:
         data = {}
         return HttpResponse(simplejson.dumps(data), mimetype='application/json')
