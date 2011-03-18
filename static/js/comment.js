@@ -24,7 +24,6 @@
            }
            
            for (var i=0; i < versions.length; i++) {
-               debugger;
                var myversion =  versions[i].split(".")[1];
                if(myversion > max_version) {
                    max_version = myversion;

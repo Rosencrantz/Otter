@@ -16,6 +16,11 @@ var imageOverlayer = (function() {
             container.push(boundingRect);
             container.push(rect);
             container.push(text);
+            text.click(function() {
+                var item = text.node.firstElementChild.textContent;
+                
+                $('html,body').animate({ scrollTop: $('.annotationId[data-version-id="' + item +'"]').offset().top }, { duration: 'slow', easing: 'swing'});
+            });
             comments[data[i].fields.region_type == "D" ? "designer" : "general"].push(container);
         }
     });
