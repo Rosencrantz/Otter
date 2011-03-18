@@ -12,7 +12,7 @@
         };
 
         var renderDialog = function(dialog, veil, className, callback) {
-            //veil.in('.dialog').hide();
+            veil.find('.dialog').hide();
 
             veil.fadeIn('fast', function() {  
                 center(dialog);
