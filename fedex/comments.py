@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseServerError
 from fedex import models
 from datetime import date
 
-import simplejson
+from django.utils import simplejson
 
 def add(request):
 
