@@ -7,26 +7,35 @@ from django.core import serializers
 
 from django.utils import simplejson
 
-def get(request, fileid=None):
-
+def getregion(request, fileid=None):
     user = request.user
-    print "file id"
-    print fileid
 
     if fileid:
         ## file
         regions = models.Region.objects.filter(files=fileid)
-        comments = []
-        for region in regions:
-            print region
-            comment = models.Comment.objects.filter(region=region)
-            print comment
-            comments.append(comment)
+            
+        s = serializers.serialize
+        return HttpResponse(s("json", regions), 'application/json')
+    else:
+        data = {}
+        return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+        ## no file
+ 
 
+def get(request, fileid=None):
+
+    user = request.user
+
+    if fileid:
+        ## file
+        regions = models.Region.objects.filter(files=fileid)
+        comments = list()
+        for region in regions:
+            comments.append(models.Comment.objects.get(region=region))
+            
         print comments
- #       comments = models.Comment.objects.get(region
-        data = {"regions":regions,"comments":comments}
-        return HttpResponse(serializers.serialize("json", regions), 'application/json')
+        s = serializers.serialize
+        return HttpResponse(s("json", comments), 'application/json')
     else:
         data = {}
         return HttpResponse(simplejson.dumps(data), mimetype='application/json')
