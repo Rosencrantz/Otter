@@ -25,12 +25,20 @@ $(document).ready(function() {
               $("#design").attr({"data-fileid":something[0].pk})
               fileid = something[0].pk;
               $.ajax({
-                  url: "/get/comments/" + fileid,
+                  url: "/get/regions/" + fileid,
                       success: function(data) {
                           if(data) {
                               Raphael.eve("render-regions",window,data);
                           }
                       }
+               });
+               $.ajax({
+                     url: "/get/comments/" + fileid,
+                         success: function(data) {
+                             if(data) {
+                                 Raphael.eve("render-comments",window,data);
+                             }
+                         }
                });
               //load comments
               //load overlays

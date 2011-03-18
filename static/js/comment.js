@@ -1,4 +1,23 @@
 (function() {
+    
+    
+    
+    
+    
+        Raphael.eve.on("render-comments",function(data) {
+           $("#annotation1").text(''); 
+           for (var i = data.length - 1; i >= 0; i--){
+             var comment ={
+               name : "some name",
+               text : data[i].fields.comment,
+               version : "1.1"
+            }
+            
+            	var template =$("script[name='comment']")[0].text;
+                var item = $.tmpl( template , comment).appendTo("#annotation1");
+            
+           };
+        });
 
         var center = function(element, callback) {
             var left = ($(window).width() / 2) - (element.width() / 2),
