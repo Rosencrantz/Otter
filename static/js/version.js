@@ -9,6 +9,7 @@ var switchMode = function(mode) {
 
 $(document).ready(function() {
     $(".version-item").click(function(e) {
+        $('#versionHistory li a').removeClass('on');
         var val = $(this).text();
         $(this).addClass("on");
         $("#toggleVersionHistory").text(val);
