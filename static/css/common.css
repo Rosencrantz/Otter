@@ -460,7 +460,8 @@ button.comments {
     position: relative;
     font-size: 0.8175em;
     line-height: 1.4;
-    padding: 32px 0 0 20px;
+    padding: 32px 0 0 87px;
+    width: 934px;
 }
 
 #annotations header {
@@ -481,6 +482,10 @@ button.comments {
     top: -12px;
     color: #CCC;
     font-weight: bold;
+}
+
+#annotations section {
+    width: 780px;
 }
 
 #annotations article  {
