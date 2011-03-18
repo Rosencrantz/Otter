@@ -1,8 +1,36 @@
 var uploader = (function(dropzoneid) {
-    
+
+        var center = function(element, callback) {
+            var left = ($(window).width() / 2) - (element.width() / 2),
+                top = ($(window).height() / 2) - (element.height() / 2);
+
+            element.css({"top": top, "left": left});
+            
+            if(typeof callback == 'function') {
+                callback();
+            }
+        };
+
+        var renderDialog = function(dialog, veil, className, callback) {
+            veil.find('.dialog').hide();
+
+            veil.fadeIn('fast', function() {  
+                center(dialog);
+                dialog.show();
+
+                if(className && className != '') {
+                    dialog.removeClass(['comment', 'explain']).addClass(className);
+                }
+
+                if(typeof callback == 'function') {
+                    callback();
+                }
+            });
+        };    
+
     var dropzone = document.getElementById(dropzoneid), bound = false;
     $(".upload").click(function() {
-        $(".dragFile").show();
+        renderDialog($('#drag-dialog'), $('#dialogs'), '', '');
     });
     
     
@@ -12,17 +40,29 @@ var uploader = (function(dropzoneid) {
         overlayer.getCurrentImage().remove();
         overlayer.loadImage(e.srcElement.result);
         overlayer.clear();
-         $(".dragFile").hide();
-         bound = false;
+        $("#dialogs").fadeOut(function() {
+             $('#drag-dialog').hide();
+        });
+
+        bound = false;
     }
 
+    $('#drag-dialog header').bind('click', function(e) {
+        $("#dialogs").fadeOut(function() {
+             $('#drag-dialog').hide();
+        });        
+    });
 
     $("#dragFilesHere").bind("dragenter",function() {
-           $(this).css({"background-color": "#ccc"});
+           //$(this).css({"background-color": "#ccc"});
+           $(this).addClass('dragged');
      });
+
      $("#dragFilesHere").bind("dragleave",function() {
-         $(this).css({"background-color": ""});
+         //$(this).css({"background-color": ""});
+         $(this).removeClass('dragged');
      });
+
      $("#dragFilesHere")[0].addEventListener("drop",function(e) {
                 var xhr = new XMLHttpRequest(),
                    	fileUpload = xhr.upload;
