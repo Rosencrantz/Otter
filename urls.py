@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     url(r'^debug/','fedex.views.add_debug',name="debug"),
     url(r'^get/comments/(?P<fileid>\d+)/$', 'fedex.comments.get'),
     url(r'^get/comments/$', 'fedex.comments.get'),
+    url(r'^get/regions/(?P<fileid>\d+)/$', 'fedex.comments.getregion'),
+    url(r'^get/regions/$', 'fedex.comments.getregion'),
     # url(r'^otter/', include('otter.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
