@@ -1,5 +1,5 @@
 var imageOverlayer = (function() {
-    var comments = {designer: [], general: []}, version = 1,container, type, stroke,revision;
+    var comments = {designer: [], general: []}, version = 1,container, type, stroke,revision, versionString;
 
         
 
@@ -43,15 +43,15 @@ var imageOverlayer = (function() {
 					var region = {x:x,y:y,width:width,height:height,type:backendType,file:file_id};
 
                 
-                   
+                    versionString = revision + "." + version;
                     rect = paper.rect(ix,iy, 40, 20).attr({"fill": stroke,"stroke":stroke});
-                    text =  paper.text(ix + 23 ,iy + 13,revision + "." + version).attr({stroke: "#FFF", "font-size": "14" });
+                    text =  paper.text(ix + 23 ,iy + 13,versionString).attr({stroke: "#FFF", "font-size": "14" });
                     version++;
                     container.push(rect);
                     container.push(text);
                     
               
-                    Raphael.eve("overlayer.drawing.stop",window,{version: version,rect: container, region:region, type:backendType,file:file_id});   
+                    Raphael.eve("overlayer.drawing.stop",window,{version: versionString,rect: container, region:region, type:backendType,file:file_id});   
                     comments[type].push(container);
                     container = null;
                     container = paper.set();
