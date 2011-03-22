@@ -102,8 +102,8 @@ var uploader = (function(dropzoneid) {
         if (e.preventDefault) {
             e.preventDefault();
           }
-          $(".dragFile").show();
-
+          
+          renderDialog($('#drag-dialog'), $('#dialogs'), '', '');
           
     }, false);
     dropzone.addEventListener('dragover', function(e) {
